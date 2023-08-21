@@ -1,0 +1,58 @@
+site_name: 2023_DD
+site_url: https://guahao31.github.io/2023_DD
+site_author: GNG not Gua
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
+  language: zh
+  features:
+    - content.code.copy
+    - navigation.tabs
+    - navigation.sections
+  icon:
+    repo: fontawesome/brands/git-alt
+    
+plugins:
+  - search
+repo_url: https://github.com/guahao31/2023_DD
+repo_name: 2023_DD
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+
+extra_css:
+  - _css/style.css
+
+nav:
+  - Home: index.md
+  - Warm Up:
+    - 实验工具安装: warmup/tools_installation.md
+
+  - Other:
+    - Git 基础: Other/about_git.md
+    - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
+
