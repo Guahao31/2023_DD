@@ -1,15 +1,23 @@
 # 实验工具安装
 
-请确保有足够的磁盘容量。（约40GB）
+我们将使用 [Vivado 套件](https://www.xilinx.com/products/design-tools/vivado.html)及 [logisim evolution](https://github.com/logisim-evolution/logisim-evolution) 完成实验，本节内容为实验工具安装的简易指导。安装过程中若遇到问题请在充分自行尝试后及时与助教沟通解决。
 
-???+ warning "追加"
-    如果使用 webpack 下载经常遇到需要 retry 的情况，你可以在**校网**环境下使用 FTP 获得 2020.2 版本；
+## Vivado 安装
 
-    FTP 地址为 ftp://10.78.18.205/
+[Vivado Design Suite](https://zh.wikipedia.org/zh-hans/Xilinx_Vivado) 是 Xilinx 开发的用于 HDL 设计的合成和分析的软件套件，具有用于片上系统开发和高级综合的附加功能。
 
-    FTP中有相关指导。为了防止传输中断导致的失败，请使用支持断点续传的 FTP 软件，比如 FileZilla。
+在安装之前，请确保电脑有足够的磁盘容量。（2020.2 版本约 40GB）
 
 💡请选择不低于 **2020.2** 的版本
+
+???+ warning "注意"
+    如果使用 webpack 下载经常遇到需要 retry 的情况，你可以
+    
+    * 在**校网**环境下使用 FTP 获得 2020.2 版本
+        * FTP 地址为 ftp://10.78.18.205/
+        * FTP中有相关指导。为了防止传输中断导致的失败，请使用支持断点续传的 FTP 软件，比如 [FileZilla](https://filezilla-project.org/)
+    * 或下载官网提供的完整镜像（一般名为 Xilinx/AMD Unified Installer 20xx.x SFD）
+        * 不同版本的完整镜像文件大小 80~110GB，文件较大，请准备好足够空间
 
 * 在官网提供的[下载网页](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html)中找到合适的版本(版本号；Windows/Linux)，选择“...Web Installer”（约300MB的文件）。
 
@@ -21,14 +29,24 @@
 
 > 习惯使用 Linux 系统的同学可以安装 Linux 版本，WSL2 也可尝试安装。
 >
+> 目前没有办法在 Apple M1/M2 机器上成功安装运行 Vivado。
+>
 > Vivado 安装路径上不要出现中文和空格。
 
-## FAQ
+### FAQ
 
-### 安装找不到 *WebPack* 选项
+#### 安装找不到 *WebPack* 选项
 
 选择 *Standard* 版本即可。 *Enterprise* 版本需要付费。
 
-### Device 看不到 Kintex-7 选项
+#### Device 看不到 Kintex-7 选项
 
 展开 *7 Series*，在里面可以找到 K7 板。
+
+## Logisim Evolution 安装
+
+LogicSim 是一种数字逻辑电路仿真工具，用于模拟数字电路的行为和性能。实验使用的 Logisim-evolution 是功能加强的免费、开源、跨平台的版本。
+
+Logisim-evolution 需要 **Java 运行环境**（Java 16+），可以在[官网下载界面](https://www.oracle.com/java/technologies/downloads/#java17)选择对应平台版本，完成下载并进行安装。
+
+如果你能打开 Logisim-evolution 项目的 [release](https://github.com/logisim-evolution/logisim-evolution/releases/tag/v3.8.0) 网页，推荐你在这个网页中选择合适的安装包或使用源码自行编译（Windows 用户可以选择 *.msi* 的安装文件，macOS 用户选择 *.dmg* 安装文件）。如果你无法稳定访问，可以在[浙大云盘](https://pan.zju.edu.cn/share/4e7b3139e7a5a3ff998ad1b5b6)下载，若链接失效，请联系 guahao@zju.edu.cn。
