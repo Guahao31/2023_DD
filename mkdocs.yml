@@ -53,6 +53,7 @@ nav:
   - Home: index.md
   - Warm Up:
     - 实验工具安装: warmup/tools_installation.md
+    - Lab4-实验工具使用: warmup/lab4.md
 
   - Other:
     - Git 基础: Other/about_git.md
