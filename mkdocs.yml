@@ -45,6 +45,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - tables
+  - attr_list
 
 extra_css:
   - _css/style.css
