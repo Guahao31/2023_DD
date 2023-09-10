@@ -34,13 +34,15 @@
 
     <img src="../pic/lab4/2.png" alt="添加门" style="zoom:34%"  />
 
-* 按 `Ctrl+6` 或用鼠标点击对应按钮，可以向电路原理图中添加输出端口：
+* `Ctrl+6` 或用鼠标点击对应按钮，可以向电路原理图中添加输出端口：
 
     <img src="../pic/lab4/3.png" alt="添加输出" style="zoom:34%"  />
 
-* 按 `Ctrl+3` 或用鼠标点击对应按钮，可以在电路原理图中画线：
+* `Ctrl+3` 或用鼠标点击对应按钮，可以在电路原理图中画线：
 
     <img src="../pic/lab4/4.png" alt="添加线路" style="zoom:34%"  />
+
+* 点击 `File > Save` 保存电路图。
 
 **仿真检查电路功能**
 
@@ -69,8 +71,6 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
     <img src="../pic/lab4/9.png" alt="导出4" style="zoom:34%"  />
 
 - 点击 `Execute`，随后点击弹出窗口中的 `Done` 即可完成
-
-    <img src="../pic/lab4/12.png" alt="导出6" style="zoom:34%"  />
 
 - 此时即可在工作目录下 `./verilog` 子目录中看到生成的 Verilog 文件。
 
