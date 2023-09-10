@@ -1,5 +1,9 @@
 # 实验四 实验工具的使用
 
+!!! warning "请在上课前完成"
+    参考[实验工具安装](./tools_installation.md)完成 Logisim Evolution 以及 Vivado 的安装。
+
+
 ## 实验目的
 
 1. 熟悉利用 Logisim Evolution 进行电路原理图绘制、电路仿真的方法。
@@ -11,13 +15,12 @@
 2. 利用 Vivado 对电路生成的 Verilog 代码进行仿真。
 3. 利用 Vivado 进行上板验证。
 
-## 实验步骤
+## Logisim 的基本操作 {: #logisim-example}
 
-### 1. 使用 Logisim 实现楼道灯控制对应电路并进行仿真
-
-#### （1）Logisim 的基本操作
-
-##### （i）电路原理图的绘制
+!!! tip
+    本节内容为 Logisim Evolution 的简单使用，包括电路图绘制和将电路图导出为 Verilog。
+    
+    我们将使用一个简单的电路展示 Logisim 的使用，请你在**浏览**本节内容后，完成[动手做](#logisim-example_lets-do-it)小节的**另一个**电路的设计。
 
 按 Ctrl+5 或鼠标点击对应按钮，可添加输入端口入电路原理图中：
 
@@ -68,6 +71,10 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 <img src="../pic/lab4/12.png" alt="导出6" style="zoom:34%"  />
 
 - 此时即可在工作目录下 `./verilog` 子目录中看到生成的 Verilog 文件。
+
+### 动手做 {: #logisim-example_lets-do-it}
+
+
 
 #### （2）楼道灯控制的电路设计及仿真
 

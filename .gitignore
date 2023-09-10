@@ -9,3 +9,5 @@ site
 
 # Test code
 code
+
+*.mytxt
