@@ -22,53 +22,55 @@
     
     我们将使用一个简单的电路展示 Logisim 的使用，请你在**浏览**本节内容后，完成[动手做](#logisim-example_lets-do-it)小节的**另一个**电路的设计。
 
-按 Ctrl+5 或鼠标点击对应按钮，可添加输入端口入电路原理图中：
+### 绘图与仿真
 
-<img src="../pic/lab4/1.png" alt="添加输入端口" style="zoom:34%"  />
+**绘图**
 
-按 Ctrl+7、 8 、9、0 或用鼠标点击对应按钮，可以分别向电路原理图中添加非门、与门、或门、异或门：
+* `Ctrl+5` 或鼠标点击对应按钮，可添加输入端口进入电路原理图中：
 
-<img src="../pic/lab4/2.png" alt="添加门" style="zoom:34%"  />
+    <img src="../pic/lab4/1.png" alt="添加输入端口" style="zoom:34%"  />
 
-按 Ctrl+6 或用鼠标点击对应按钮，可以向电路原理图中添加输出端口：
+* `Ctrl+7/8/9/0` 或用鼠标点击对应按钮，可以分别向电路原理图中添加非门、与门、或门、异或门：
 
-<img src="../pic/lab4/3.png" alt="添加输出" style="zoom:34%"  />
+    <img src="../pic/lab4/2.png" alt="添加门" style="zoom:34%"  />
 
-按 Ctrl+3 或用鼠标点击对应按钮，可以在电路原理图中画线：
+* 按 `Ctrl+6` 或用鼠标点击对应按钮，可以向电路原理图中添加输出端口：
 
-<img src="../pic/lab4/4.png" alt="添加线路" style="zoom:34%"  />
+    <img src="../pic/lab4/3.png" alt="添加输出" style="zoom:34%"  />
 
-画好电路原理图之后，按 Ctrl+1，即可通过点击输入端口来改变输入端口的输入值，从而可以通过遍历所有输入值来检查电路功能是否正常。其中，深绿色表示低电平，亮绿色表示高电平。
+* 按 `Ctrl+3` 或用鼠标点击对应按钮，可以在电路原理图中画线：
+
+    <img src="../pic/lab4/4.png" alt="添加线路" style="zoom:34%"  />
+
+**仿真检查电路功能**
+
+画好电路原理图之后，`Ctrl+1` 即可通过点击输入端口来改变输入端口的输入值，从而可以通过遍历所有输入值来检查电路功能是否正常。其中，深绿色表示低电平，亮绿色表示高电平。
 
 <img src="../pic/lab4/5.png" alt="logisim 仿真" style="zoom:34%"  />
 
-按 Ctrl+2 或鼠标点击对应图标后，双击输入输出端口，即可为其命名。只有将输入、输出端口命名，方可将其正常地转为 Verilog。
+**为输入输出端口命名，以便转为 Verilog**
+
+`Ctrl+2` 或鼠标点击对应图标后，双击输入输出端口，即可为其命名。*只有将输入、输出端口命名，方可将其正常地转为 Verilog*。
 
 <img src="../pic/lab4/10.png" alt="命名" style="zoom:34%"  />
 
-##### （ii）将电路图导出为Verilog
+### 导出为Verilog
 
 Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 Logisim 电路图转化为 Verilog 之后，方可在 Vivado 中进行电路实现。通过 Logisim 电路原理图导出 Verilog 的方法如下：
 
-- 首先，将选择上方状态栏的FPGA > Synthesize & Download
+- 选择上方状态栏的FPGA > Synthesize & Download
 
-<img src="../pic/lab4/6.png" alt="导出1" style="zoom:34%"  />
-
-- 在弹出的窗口中，选择目标板为 `FPGA4U`
-
-<img src="../pic/lab4/7.png" alt="导出2" style="zoom:34%"  />
+- 在弹出的窗口中，选择目标板(Target board)为 `FPGA4U`
+    
+    <img src="../pic/lab4/8.png" alt="导出3" style="zoom:34%"  />
 
 - 点击 `Settings` 按钮，并且将弹出窗口中 `FPGA Commander Settings` 选项下的 `Hardware discription language used for FPGA commander` 选项更改为 `Verilog`，随后可关闭弹出窗口。
 
-<img src="../pic/lab4/8.png" alt="导出3" style="zoom:34%"  />
-
-<img src="../pic/lab4/9.png" alt="导出4" style="zoom:34%"  />
+    <img src="../pic/lab4/9.png" alt="导出4" style="zoom:34%"  />
 
 - 点击 `Execute`，随后点击弹出窗口中的 `Done` 即可完成
 
-<img src="../pic/lab4/11.png" alt="导出5" style="zoom:34%"  />
-
-<img src="../pic/lab4/12.png" alt="导出6" style="zoom:34%"  />
+    <img src="../pic/lab4/12.png" alt="导出6" style="zoom:34%"  />
 
 - 此时即可在工作目录下 `./verilog` 子目录中看到生成的 Verilog 文件。
 
