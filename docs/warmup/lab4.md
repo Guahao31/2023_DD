@@ -3,12 +3,6 @@
 !!! warning "请在上课前完成"
     参考[实验工具安装](./tools_installation.md)完成 Logisim Evolution 以及 Vivado 的安装。
 
-
-## 实验目的
-
-1. 熟悉利用 Logisim Evolution 进行电路原理图绘制、电路仿真的方法。
-2. 熟悉利用 Vivado 进行 FPGA 工程管理的方法。
-
 ## 实验任务
 
 1. 使用 Logisim 实现指定电路并进行仿真。
