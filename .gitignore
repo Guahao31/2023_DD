@@ -1,5 +1,7 @@
 # For temp on Mac
 .DS_Store
+makefile
+public/
 
 # mkdocs
 site
