@@ -6,8 +6,8 @@
 ## 实验任务
 
 1. 使用 Logisim 实现指定电路并进行仿真。
-2. 利用 Vivado 对电路生成的 Verilog 代码进行仿真。
-3. 利用 Vivado 进行上板验证。
+2. 使用 Vivado 对电路生成的 Verilog 代码进行仿真。
+3. 使用 Vivado 进行上板验证。
 
 ## Logisim 的基本操作 {: #logisim-example}
 
