@@ -17,7 +17,7 @@
 
 ## Logisim 的基本操作 {: #logisim-example}
 
-!!! tip
+!!! abstract
     本节内容为 Logisim Evolution 的简单使用，包括电路图绘制和将电路图导出为 Verilog。
     
     我们将使用一个简单的电路展示 Logisim 的使用，请你在**浏览**本节内容后，完成[动手做](#logisim-example_lets-do-it)小节的**另一个**电路的设计。
@@ -94,26 +94,38 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### 创建 Vivado 工程
 
-**新建工程**
-
 * 启动 Vivado 之后，选择顶部快捷栏中的 `File -> Project -> New`。
 
 * 在 **Project Name** 界面中修改工程名称及路径，请注意，路径和名称中不要有中文，以避免一些问题。
 
 * 在 **Project Type** 界面，选择 `RTL Project`，子选项保持默认即可。
 
-- 选择 `xc7k160tffg676-2L` 型号：
+* 在 **Default Part** 界面，搜索并选择 `xc7k160tffg676-2L`。
 
-<img src="../pic/lab4/17.png" alt="创建工程" />
+* 点击 `Finish` 即可完成工程创建。
 
-- 点击 `Finish` 即可完成工程创建。
+### 添加或创建文件
 
-- 工程创建完成后，可在`Flow Navigator`的 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
+工程创建完成后，可在 `Flow Navigator` 的 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
 
-- 选择 `Add or Create Design Source`
+>    *constraints* 为约束文件，主要有时序约束和物理约束。
+>
+>    *design sources* 为用于综合的代码文件，其中书写功能逻辑。
+>
+>   *simulation sources* 为用于仿真的代码文件，其中书写测试逻辑。
 
-<img src="../pic/lab4/20.png" alt="创建工程" />
+**添加用于综合的文件**，即上一小节得到的 Verilog 代码，选择 `Add or Create Design Source`，
+选择 `verilog` 子目录下的 `circuit` 和 `gates` 子目录的 Verilog 文件全部拷贝到工程中，随后点击 `Finish` 完成。
+因为我们需要的是两个目录下的所有文件，因此可以通过 `Add Directories` 将两个目录下的全部文件添加进来。
 
-- 选择 Logisim 工程目录的 verilog 子目录下的 circuit 和 gates 子目录的 Verilog 文件全部拷贝到工程中，随后点击 Finish 完成：
+!!! tip
+    本节实验中，是否勾选 `Copy sources into project` 选项对实验过程影响不大。
+    如果勾选，它会将你添加的文件拷贝到工程目录下 `xxx.srcs/` 对应的目录下。
 
 <img src="../pic/lab4/21.png" alt="创建工程" />
+
+**添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](TODO/lab4_example_tb.v)。
+选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。
+
+**添加约束文件**，本节实验中我们同样提供了需要的[约束文件](TODO/lab4_example_constraints.xdc)，
+选择 `Add or Create Constraints` 将约束文件添加进入工程。
