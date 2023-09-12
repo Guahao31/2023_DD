@@ -7,7 +7,7 @@
 《数字逻辑设计》实验主要内容是使用 Verilog 语言完成数字逻辑设计，实验形式以分节小实验为主。
 
 
-💡***请在第一次实验课前安装 Vivado 与 logisim-evolution，可参考“热身”中“ [实验工具安装](./warmup/tools_installation/)”一节。***
+💡***请在第一次实验课前安装 Vivado 与 logisim-evolution，可参考“热身”中“ [实验工具安装](warmup/tools_installation.md)”一节。***
 
 ## 更新日志
 

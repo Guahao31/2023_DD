@@ -1,6 +1,8 @@
 site_name: 2023_DD
 site_url: https://guahao31.github.io/2023_DD
 site_author: GNG not Gua
+repo_url: https://github.com/guahao31/2023_DD
+repo_name: 2023_DD
 
 theme:
   name: material
@@ -19,15 +21,15 @@ theme:
   language: zh
   features:
     - content.code.copy
-    - navigation.tabs
-    - navigation.sections
+    # - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    # - navigation.sections
   icon:
     repo: fontawesome/brands/git-alt
     
 plugins:
   - search
-repo_url: https://github.com/guahao31/2023_DD
-repo_name: 2023_DD
 
 markdown_extensions:
   - admonition
@@ -43,6 +45,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - tables
+  - attr_list
 
 extra_css:
   - _css/style.css
@@ -51,8 +54,8 @@ nav:
   - Home: index.md
   - Lab 4 - Warm Up:
     - 实验工具安装: warmup/tools_installation.md
+    - Lab4-实验工具使用: warmup/lab4.md
   - Lab 5 - Decoder: lab5/decoder.md
-
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md

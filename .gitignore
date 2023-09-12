@@ -6,6 +6,9 @@ site
 
 # for tree of example
 3210101145_*
+tools/out/
 
 # Test code
 code
+
+*.mytxt
