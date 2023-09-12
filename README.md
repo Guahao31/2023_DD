@@ -1,4 +1,4 @@
-# ZJU-Digital Design Lab 2023
+# ZJU-Digital Logic Design Lab 2023
 
 本仓库用来发布《数字逻辑设计》课程实验文档，你可以直接查看[在线文档](https://guahao31.github.io/2023_DD)，或将本仓库拉至本地部署。
 
