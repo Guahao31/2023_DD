@@ -49,8 +49,9 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Warm Up:
+  - Lab 4 - Warm Up:
     - 实验工具安装: warmup/tools_installation.md
+  - Lab 5 - Decoder: lab5/decoder.md
 
   - Other:
     - Git 基础: Other/about_git.md
