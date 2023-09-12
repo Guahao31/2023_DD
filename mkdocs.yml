@@ -1,5 +1,6 @@
 site_name: 2023_DD
-site_url: https://guahao31.github.io/2023_DD
+# site_url: https://guahao31.github.io/2023_DD
+site_dir: public
 site_author: GNG not Gua
 repo_url: https://github.com/guahao31/2023_DD
 repo_name: 2023_DD
