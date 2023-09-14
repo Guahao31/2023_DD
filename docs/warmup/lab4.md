@@ -117,16 +117,12 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 ### Logisim 的基本操作
 
 1. 提供绘制的电路图的截图。
-
 2. 提供**一张**仿真时的截图，要求三个输入值分别为 `0, 1, 1`。
-
-3. 导出 Verilog 后，找到工作目录下 `verilog/circuit/` 中的文件，
-截图代码内容或将高亮代码粘贴在实验报告中。
+3. 导出 Verilog 后，找到工作目录下 `verilog/circuit/` 中的文件。截图代码内容或将高亮代码粘贴在实验报告中。
 
 ### Vivado 的基本操作
 
-1. 完成*添加或创建文件*步骤后，截图源代码结构部分，类似下图，点按图中圈出部分可以展开
-所有目录。要求必须展示出 `Design Sources, Constraints, Simulation Sources` 的内容。
+1. 完成*添加或创建文件*步骤后，截图源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 `Design Sources, Constraints, Simulation Sources` 的内容。
 
     <img src="../pic/lab4/sources_hierarchy.png" style="zoom:50%">
 
