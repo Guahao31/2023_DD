@@ -19,6 +19,7 @@
 请合理使用搜索引擎。
 
 在安装成功之后，你也许需要进行一些全局配置，以便之后提交：
+
 ```
 $ git config --global user.name "CO_2023"
 $ git config --global user.email "CoputerOrganization@zju.edu.cn"
@@ -48,13 +49,14 @@ $ git config --global user.email "CoputerOrganization@zju.edu.cn"
 
 ## 看看过去
 
-你想查看一下到目前为止，都做了什么存档，使用 `git log` 即可，它会提供至今为止所有的 `commit` 信息（时间，提交者，描述，hashcode），为了通过`log`更好的查看工作，你也许需要写出更优秀的commit信息 ([angular规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines))。
+你想查看一下到目前为止，都做了什么存档，使用 `git log` 即可，它会提供至今为止所有的 `commit` 信息（时间，提交者，描述，hashcode），为了通过 `log` 更好的查看工作，你也许需要写出更优秀的 commit 信息 ([angular 规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines))。  
 
-如果你想回到过去的某个 `commit`，可以使用 `git reset --hard <commit>`。需要注意的是，如果你使用了 `--hard`，在回到你指定的commit后，你将无法前往这个commit之后的任何一个commit，因此在操作前请慎重。
+如果你想回到过去的某个 `commit`，可以使用 `git reset --hard <commit>`。需要注意的是，如果你使用了 `--hard`，在回到你指定的 commit 后，你将无法前往这个 commit 之后的任何一个 commit，因此在操作前请慎重。
 
 ## 分支
 
-如同Galgame会有剧情分支一样，我们的工程可能延伸出来若干 `feature`，我们可以使用 `git checkout -b <feature>` 来新建一个分支，并在这个分支上完成相关工作，最后通过 `git merge` 将新的内容合并到之前的主分支中。（有可能需要解决不同分支的冲突）
+如同 Galgame 会有剧情分支一样，我们的工程可能延伸出来若干 `feature`，我们可以使用 `git checkout -b <feature>` 来新建一个分支，并在这个分支上完成相关工作，最后通过 `git merge` 将新的内容合并到之前的主分支中。（有可能需要解决不同分支的冲突）
+
 分支算是 `git` 的灵魂之一，当然并不属于非常基本的内容，如果你好奇的话，请自行学习并尝试。
 
 ## 忽略文件
@@ -81,6 +83,6 @@ site
 !pics/*.png
 ```
 
-!!! tip "你可能需要：[适用于Vivado工程的.gitignore](https://support.xilinx.com/s/article/61232?language=en_US)。"
+!!! tip "你可能需要：[适用于 Vivado 工程的 .gitignore](https://support.xilinx.com/s/article/61232?language=en_US)。"
 
-以上内容只是 `git` 使用的最基本指令，你还可以学习使用 `git` 管理工程的工作流(比如[ bilibili 视频](https://www.bilibili.com/video/BV19e4y1q7JJ)。如果遇到问题，可以查看 `git` 文档或 `git --help` 查看帮助。
+以上内容只是 `git` 使用的最基本指令，你还可以学习使用 `git` 管理工程的工作流(比如 [bilibili 视频](https://www.bilibili.com/video/BV19e4y1q7JJ)。如果遇到问题，可以查看 `git` 文档或 `git --help` 查看帮助。
