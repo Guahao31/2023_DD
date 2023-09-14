@@ -34,7 +34,7 @@ $ pip install mkdocs-material
 $ git clone git@github.com:Guahao31/2023_DD.git
 $ git clone https://github.com/Guahao31/2023_DD.git
 # 构建
-$ cd ./2023_CO
+$ cd ./2023_DD
 $ mkdocs serve
 ```
 
