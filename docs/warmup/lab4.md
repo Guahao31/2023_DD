@@ -97,13 +97,25 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 <img src="../pic/lab4/21.png" alt="创建工程" />
 
+成功添加后，请检查 `Design Sources` 中的顶层模块是否正确设置，在本实验中，顶层模块应为 `main`。下图中红框部分为顶层模块的标识。  
+
+<img src="../pic/lab4/top_module.png" style="zoom:80%">
+
 **添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](TODO/lab4_example_tb.v)。选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。  
 
 **添加约束文件**，本节实验中我们同样提供了需要的[约束文件](TODO/lab4_example_constraints.xdc)，选择 `Add or Create Constraints` 将约束文件添加进入工程。  
 
 ### 仿真
 
+在进行仿真前，请检查仿真文件 `Simulation Sources` 中的**顶层模块**是否选择正确，本实验中应选择导入的 `lab4_tb` 作为顶层模块。*一个工程中可以有多个仿真文件，但只有一个仿真顶层模块，如果你需要使用其他的仿真文件，可以通过右键并选择 `Set as top` 进行切换。*  
 
+<img src="../pic/lab4/lab4_tb_top.png">
+
+确认无误后，点击左边栏 `SIMULATION -> Run Simulation`，进行仿真。
+
+首先认识一下界面，**上栏**中以下按钮从左到右依次为：
+
+* 
 
 ### 生成 bitstream 并烧录
 
