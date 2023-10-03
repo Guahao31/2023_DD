@@ -113,9 +113,15 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 确认无误后，点击左边栏 `SIMULATION -> Run Simulation`，进行仿真。
 
-首先认识一下界面，**上栏**中以下按钮从左到右依次为：
+<img src="../pic/lab4/simulation_top.png" alt="仿真上栏">
 
-* 
+首先认识一下界面，上栏图中按钮从左到右依次为：
+
+* Restart：清空当前波形，准备进行下次仿真（Windows 下某些版本极易造成闪退）
+* Run All：进行一遍仿真，直到遇到停止信号（如 `$finish()`或在 GUI 中设置的断点）或某一时间上限
+* Run for xxx：与右侧两栏配合，表示从当前仿真位置开始，继续仿真多久
+* Step：笔者并不清楚此功能，推测是多个断点间步进
+* Relauch Simulation：如果修改了仿真文件或用于综合的代码，需要重新加载
 
 ### 生成 bitstream 并烧录
 
