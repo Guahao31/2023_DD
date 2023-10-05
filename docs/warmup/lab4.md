@@ -1,5 +1,7 @@
 # 实验四 实验工具的使用
 
+<!-- TODO: 需要修改风格，路径/操作顺序用代码块``包裹，按钮用*** ***包裹为斜体加粗 -->
+
 !!! warning "请在上课前完成"
     参考[实验工具安装](./tools_installation.md)完成 Logisim Evolution 以及 Vivado 的安装。
 
@@ -101,9 +103,9 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 <img src="../pic/lab4/top_module.png" style="zoom:80%">
 
-**添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](TODO/lab4_example_tb.v)。选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。  
+**添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](../attachment/lab4_tb.v)。选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。  
 
-**添加约束文件**，本节实验中我们同样提供了需要的[约束文件](TODO/lab4_example_constraints.xdc)，选择 `Add or Create Constraints` 将约束文件添加进入工程。  
+**添加约束文件**，本节实验中我们同样提供了需要的[约束文件](../attachment/constraints_lab4.xdc)，选择 `Add or Create Constraints` 将约束文件添加进入工程。  
 
 ### 仿真
 
@@ -117,11 +119,21 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 首先认识一下界面，上栏图中按钮从左到右依次为：
 
-* Restart：清空当前波形，准备进行下次仿真（Windows 下某些版本极易造成闪退）
-* Run All：进行一遍仿真，直到遇到停止信号（如 `$finish()`或在 GUI 中设置的断点）或某一时间上限
-* Run for xxx：与右侧两栏配合，表示从当前仿真位置开始，继续仿真多久
+* **Restart**：清空当前波形，准备进行下次仿真（Windows 下某些版本极易造成闪退）
+* **Run All**：进行一遍仿真，直到遇到停止信号（如 `$finish()`或在 GUI 中设置的断点）或某一时间上限
+* **Run for xxx**：与右侧两栏配合，表示从当前仿真位置开始，继续仿真多久
 * Step：笔者并不清楚此功能，推测是多个断点间步进
-* Relauch Simulation：如果修改了仿真文件或用于综合的代码，需要重新加载
+* **Relaunch Simulation**：如果修改了仿真文件或用于综合的代码，需要重新加载
+
+<img src="../pic/lab4/simulation_mid.png" alt="波形界面上栏" style="zoom:70%">
+
+在波形界面栏中也有几个较为实用的按钮：
+
+* **Search**：选中波形后，可以根据想要的值（完全匹配、高位匹配或低位匹配）搜索，找到该值所在的位置
+* Save Waveform Congfiguration：如果对波形设置有修改（如添加或删除了信号，修改了信号的数制，信号线颜色等）可以通过保存得到配置文件，方便之后仿真时直接使用修改后的配置文件
+    * 在仿真界面中，通过 `File > Simulation Waveform > Open Configuration` 可以打开之前保存的配置文件，打开后点击 Relaunch Simulation 即可生成对应波形
+* **Zoom Fit**：可以将当前缩放自动调整为较合适的大小
+* 其他按钮的功能可以自行尝试，部分按钮需要先选中信号才能使用，没有特别需要注意的点
 
 ### 生成 bitstream 并烧录
 
@@ -149,8 +161,8 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### Vivado 的基本操作
 
-1. 完成*添加或创建文件*步骤后，截图源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 `Design Sources, Constraints, Simulation Sources` 的内容。
+1. 完成**添加或创建文件**步骤后，截图源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 **Design Sources, Constraints, Simulation Sources** 的内容。
 
     <img src="../pic/lab4/sources_hierarchy.png" style="zoom:50%">
 
-2. 
+2. 完成**仿真**步骤后，截图仿真界面，要求波形缩放合适，能够在一张图中看到所测试的所有输入及对应的输出。与 **Logisim 的基本操作**中得到的真值表对照，查看结果是否一致。
