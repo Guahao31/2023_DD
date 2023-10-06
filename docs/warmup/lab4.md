@@ -86,7 +86,7 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 工程创建完成后，可在 `Flow Navigator` 的 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
 
->    *constraints* 为约束文件，主要有时序约束和物理约束。
+>    *constraints* 为约束文件，主要有引脚约束、时序约束和物理约束等。
 >
 >    *design sources* 为用于综合的代码文件，其中书写功能逻辑。
 >
@@ -140,7 +140,27 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### 生成 bitstream 并烧录
 
+**Bitstream** 文件是一种由比特流组成的文件，用于存储和传输数据。在我们的实验中，它用来存储 FPGA 的配置信息，可以通过烧录对 FPGA 进行重新编程。
 
+在生成 bitstream 之前，我们需要检查并修改约束文件。找到并打开添加进工程的 `constraints_lab4.xdc` 并查看其中的内容。本实验中进行的约束均为**引脚约束**(Pin Constraints)，需要设置引脚分配和电气属性，你需要给本工程顶层模块 `main` 中的所有输入、输出端口即 `I0, I1, I2, res` 设置引脚约束。以 `I1` 的约束进行举例：  
+
+```
+set_property PACKAGE_PIN AA10 [get_ports {I0}]
+set_property IOSTANDARD LVCMOS15 [get_ports {I0}]
+```
+
+它为端口 `I0` 分配了引脚 `AA10`，这是板上最右侧的开关，你可以在 SWORD 板对应开关下方看到 `AA10` 的标记；同时，它规定了引脚的输入/输出标准为 LVCMOS15，此处不需要深究，感兴趣的同学可以自行搜索。
+
+你需要修改下边这个约束，使端口 `I2` 分配到引脚 `AA13` 上，输入/输出标准为 LVCMOS15。**请注意**，你只能修改以下划线 `_` 开头的内容（即 `_SOME_PIN` 以及 `_which_signal`），之后的实验中也以下划线开头为“需要修改部分”的提示。  
+
+```
+set_property PACKAGE_PIN _SOME_PIN [get_ports {_which_signal}]
+set_property IOSTANDARD LVCMOS15 [get_ports {_which_signal}]
+```
+
+修改约束文件后，你可以点击 `Flow Navifator` 中的 `PROGRAM AND DEBUG > Generate Bitstream` **生成比特流**。
+
+生成比特流的结果将通过弹窗方式提示，如果生成失败请查看日志文件确定失败的原因。得到 bitstream 后，我们需要连接设备并进行烧录，
 
 ## 实验报告要求
 
