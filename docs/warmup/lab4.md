@@ -84,7 +84,7 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### 添加或创建文件
 
-工程创建完成后，可在 `Flow Navigator` 的 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
+工程创建完成后，可在 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
 
 >    *constraints* 为约束文件，主要有引脚约束、时序约束和物理约束等。
 >
@@ -158,15 +158,17 @@ set_property PACKAGE_PIN _SOME_PIN [get_ports {_which_signal}]
 set_property IOSTANDARD LVCMOS15 [get_ports {_which_signal}]
 ```
 
-修改约束文件后，你可以点击 `Flow Navifator` 中的 `PROGRAM AND DEBUG > Generate Bitstream` **生成比特流**。
+修改约束文件后，你可以点击 `PROGRAM AND DEBUG > Generate Bitstream` **生成比特流**。
 
-生成比特流的结果将通过弹窗方式提示，如果生成失败请查看日志文件确定失败的原因。得到 bitstream 后，我们需要连接设备并进行烧录，
+生成比特流的结果将通过弹窗方式提示，如果生成失败请查看日志文件确定失败的原因。
+
+得到 bitstream 后，我们需要将下载器连接到电脑上，点击 `PROGRAM AND DEBUG > Open Hardware Manager > Open Target > Auto Connect` 进行识别和连接，成功连接后，点击 `Program Device` 选择 `xc7k160t` 设备，在下载程序界面选择我们刚刚生成的比特流文件，将其下载到板上。这一步可能会出现**驱动未安装**的问题，请自行尝试解决，如果无法解决问题请及时联系助教。
 
 ## 实验报告要求
 
 ### Logisim 的基本操作
 
-1. 提供绘制的电路图的截图。
+1. 提供绘制的电路图的截图。w
 2. 提供**一张**仿真时的截图，要求三个输入值分别为 `0, 1, 1`。并将你的实验结果填写到下表中（你不需要画出表格，将结果从上到下依次书写即可）：
 
     | I0 | I1 | I2 | res |
