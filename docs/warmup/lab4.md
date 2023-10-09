@@ -1,5 +1,10 @@
 # 实验四 实验工具的使用
 
+<!-- TODO: 需要修改风格，路径/操作顺序用代码块``包裹，按钮用*** ***包裹为斜体加粗 -->
+
+!!! danger "附件有效性"
+    目前仍未对本实验附件进行测试，可能存在问题
+
 !!! warning "请在上课前完成"
     参考[实验工具安装](./tools_installation.md)完成 Logisim Evolution 以及 Vivado 的安装。
 
@@ -79,9 +84,9 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### 添加或创建文件
 
-工程创建完成后，可在 `Flow Navigator` 的 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
+工程创建完成后，可在 `Project Manager` 中选择 `Add Sources`，即可在工程中添加或创建文件。
 
->    *constraints* 为约束文件，主要有时序约束和物理约束。
+>    *constraints* 为约束文件，主要有引脚约束、时序约束和物理约束等。
 >
 >    *design sources* 为用于综合的代码文件，其中书写功能逻辑。
 >
@@ -97,24 +102,80 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 <img src="../pic/lab4/21.png" alt="创建工程" />
 
-**添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](TODO/lab4_example_tb.v)。选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。  
+成功添加后，请检查 `Design Sources` 中的顶层模块是否正确设置，在本实验中，顶层模块应为 `main`。下图中红框部分为顶层模块的标识。  
 
-**添加约束文件**，本节实验中我们同样提供了需要的[约束文件](TODO/lab4_example_constraints.xdc)，选择 `Add or Create Constraints` 将约束文件添加进入工程。  
+<img src="../pic/lab4/top_module.png" style="zoom:80%">
+
+**添加用于仿真的文件**，本节实验中，我们提供了用到的[仿真文件](../attachment/lab4_tb.v)。选择 `Add or Create Simulation Sources` 将仿真文件添加进入工程。  
+
+**添加约束文件**，本节实验中我们同样提供了需要的[约束文件](../attachment/constraints_lab4.xdc)，选择 `Add or Create Constraints` 将约束文件添加进入工程。  
 
 ### 仿真
 
+在进行仿真前，请检查仿真文件 `Simulation Sources` 中的**顶层模块**是否选择正确，本实验中应选择导入的 `lab4_tb` 作为顶层模块。*一个工程中可以有多个仿真文件，但只有一个仿真顶层模块，如果你需要使用其他的仿真文件，可以通过右键并选择 `Set as top` 进行切换。*  
 
+<img src="../pic/lab4/lab4_tb_top.png">
+
+确认无误后，点击左边栏 `SIMULATION -> Run Simulation`，进行仿真。
+
+<img src="../pic/lab4/simulation_top.png" alt="仿真上栏">
+
+首先认识一下界面，上栏图中按钮从左到右依次为：
+
+* **Restart**：清空当前波形，准备进行下次仿真（Windows 下某些版本极易造成闪退）
+* **Run All**：进行一遍仿真，直到遇到停止信号（如 `$finish()`或在 GUI 中设置的断点）或某一时间上限
+* **Run for xxx**：与右侧两栏配合，表示从当前仿真位置开始，继续仿真多久
+* Step：笔者并不清楚此功能，推测是多个断点间步进
+* **Relaunch Simulation**：如果修改了仿真文件或用于综合的代码，需要重新加载
+
+<img src="../pic/lab4/simulation_mid.png" alt="波形界面上栏" style="zoom:70%">
+
+在波形界面栏中也有几个较为实用的按钮：
+
+* **Search**：选中波形后，可以根据想要的值（完全匹配、高位匹配或低位匹配）搜索，找到该值所在的位置
+* Save Waveform Congfiguration：如果对波形设置有修改（如添加或删除了信号，修改了信号的数制，信号线颜色等）可以通过保存得到配置文件，方便之后仿真时直接使用修改后的配置文件
+    * 在仿真界面中，通过 `File > Simulation Waveform > Open Configuration` 可以打开之前保存的配置文件，打开后点击 Relaunch Simulation 即可生成对应波形
+* **Zoom Fit**：可以将当前缩放自动调整为较合适的大小
+* 其他按钮的功能可以自行尝试，部分按钮需要先选中信号才能使用，没有特别需要注意的点
 
 ### 生成 bitstream 并烧录
 
+**Bitstream** 文件是一种由比特流组成的文件，用于存储和传输数据。在我们的实验中，它用来存储 FPGA 的配置信息，可以通过烧录对 FPGA 进行重新编程。
 
+在生成 bitstream 之前，我们需要检查并修改约束文件。找到并打开添加进工程的 `constraints_lab4.xdc` 并查看其中的内容。本实验中进行的约束均为**引脚约束**(Pin Constraints)，需要设置引脚分配和电气属性，你需要给本工程顶层模块 `main` 中的所有输入、输出端口即 `I0, I1, I2, res` 设置引脚约束。以 `I1` 的约束进行举例：  
+
+```
+set_property PACKAGE_PIN AA10 [get_ports {I0}]
+set_property IOSTANDARD LVCMOS15 [get_ports {I0}]
+```
+
+它为端口 `I0` 分配了引脚 `AA10`，这是板上最右侧的开关，你可以在 SWORD 板对应开关下方看到 `AA10` 的标记；同时，它规定了引脚的输入/输出标准为 LVCMOS15，此处不需要深究，感兴趣的同学可以自行搜索。
+
+你需要修改下边这个约束，使端口 `I2` 分配到引脚 `AA13` 上，输入/输出标准为 LVCMOS15。**请注意**，你只能修改以下划线 `_` 开头的内容（即 `_SOME_PIN` 以及 `_which_signal`），之后的实验中也以下划线开头为“需要修改部分”的提示。  
+
+```
+set_property PACKAGE_PIN _SOME_PIN [get_ports {_which_signal}]
+set_property IOSTANDARD LVCMOS15 [get_ports {_which_signal}]
+```
+
+修改约束文件后，你可以点击 `PROGRAM AND DEBUG > Generate Bitstream` **生成比特流**。
+
+生成比特流的结果将通过弹窗方式提示，如果生成失败请查看日志文件确定失败的原因。
+
+得到 bitstream 后，我们需要将下载器连接到电脑上，点击 `PROGRAM AND DEBUG > Open Hardware Manager > Open Target > Auto Connect` 进行识别和连接，成功连接后，点击 `Program Device` 选择 `xc7k160t` 设备，在下载程序界面选择我们刚刚生成的比特流文件，将其下载到板上。这一步可能会出现**驱动未安装**的问题，请自行尝试解决，如果无法解决问题请及时联系助教。
+
+### 板上操作
+
+SWORD 板上有 16 个开关，我们之前将 `I0, I1, I2` 分别约束到了**从右往左**数第1、2、3三个开关，开关到下方对应的输入为 `0`。
+
+请调节开关，并观察 Arduino 子板上 LED 的亮灭情况。
 
 ## 实验报告要求
 
 ### Logisim 的基本操作
 
-1. 提供绘制的电路图的截图。
-2. 提供**一张**仿真时的截图，要求三个输入值分别为 `0, 1, 1`。并将你的实验结果填写到下表中（你不需要画出表格，将结果从上到下依次书写即可）：
+1. 提供绘制的电路图的截图。w
+2. 提供**一张**仿真时的截图，要求三个输入值分别为 `0, 1, 1`。并将你的实验结果**填写**到下表中（你不需要画出表格，将结果从上到下依次书写即可）：
 
     | I0 | I1 | I2 | res |
     |---|---|---|---|
@@ -127,12 +188,14 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
     | 1 | 0 | 1 | |
     | 1 | 1 | 1 | |
 
-3. 导出 Verilog 后，找到工作目录下 `verilog/circuit/` 中的文件。截图代码内容或将高亮代码粘贴在实验报告中。
+3. 导出 Verilog 后，找到工作目录下 `verilog/circuit/` 中的文件。**截图**代码内容或将高亮代码粘贴在实验报告中。
 
 ### Vivado 的基本操作
 
-1. 完成*添加或创建文件*步骤后，截图源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 `Design Sources, Constraints, Simulation Sources` 的内容。
+1. 完成**添加或创建文件**步骤后，**截图**源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 **Design Sources, Constraints, Simulation Sources** 的内容。
 
     <img src="../pic/lab4/sources_hierarchy.png" style="zoom:50%">
 
-2. 
+2. 完成**仿真**步骤后，**截图**仿真界面，要求波形缩放合适，能够在一张图中看到所测试的所有输入及对应的输出。与 **Logisim 的基本操作**中得到的真值表对照，查看结果是否一致。
+
+3. 完成**板上操作**步骤时，**拍摄** `I0, I1, I2` 对应开关为 `0, 1, 1` 时的 Arduino 上 LED 亮灭情况。回答：真值表中 `1(True)` 对应 Arduino 板上 LED 的**亮**还是**灭**。
