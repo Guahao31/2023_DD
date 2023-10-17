@@ -1,5 +1,6 @@
 `timescale 1ns/1ns
 
+// Filename: lab4_tb.v
 module lab4_tb ();
 
     reg I0;

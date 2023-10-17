@@ -1,3 +1,4 @@
+# Filename: constraints_lab4.xdc
 ## Constraints file for Lab4
 
 # Input from switches
