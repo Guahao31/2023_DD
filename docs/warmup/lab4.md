@@ -170,6 +170,14 @@ SWORD 板上有 16 个开关，我们之前将 `I0, I1, I2` 分别约束到了**
 
 请调节开关，并观察 Arduino 子板上 LED 的亮灭情况。
 
+## FAQ
+
+> Updated 2023.10.17
+
+### synthesis failed with NO Warnings/Errors
+
+请查看“计算机名称”，如果为中文，请参照 [Windows 10 修改电脑名称](https://support.microsoft.com/zh-cn/windows/%E9%87%8D%E5%91%BD%E5%90%8D-windows-10-%E7%94%B5%E8%84%91-750bc75d-8ff8-e99a-b9dc-04dff566ae74)将计算机名称修改为**英文**。Windows 11 用户可以在`设置-系统-系统信息-重命名这台电脑`进行修改，也可以直接搜索“重命名你的电脑”。感谢吴cy同学发现的解决方法。
+
 ## 实验报告要求
 
 ### Logisim 的基本操作
