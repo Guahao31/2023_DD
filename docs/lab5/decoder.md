@@ -67,4 +67,13 @@
 
 比如我们有一个 4 位地址信号 `addr`，希望将地址信号的低 2 位分流给 `a`，将高两位分别分流给 `b, c`。在设置时，因为 `addr` 线宽为 4，我们将 Bit Width In 设置为 4；因为分流给 `a, b, c` 三线需要三个分流端口，设置 Fan Out 为 3；随后将四个 bit 分配给合适的分流端口即可，得到的器件如下图：  
 
-<img src="../pic/example_splitter.png" style="zoom:60%">
+<img src="../pic/example_splitter.png" style="zoom:60%">  
+
+以下为一种 74LS138 功能实现的电路图，你可以参考来完成电路图绘制：
+
+<img src="../pic/D_74LS138_sch.png" style="display: block; margin: 0 auto; zoom:60%">
+
+!!!tip "建议"
+    **推荐**你在画完图后使用 logisim 进行一些简单的仿真，确保线的连接没有严重问题。
+
+绘图完成后，请获得 Verilog 代码，如果你忘记如何操作，请回看实验四的[实验指导](../warmup/lab4.md#logisim-export-verilog)。一切顺利的话，你将在 Logisim 工作目录对应工程文件夹的 `D_74LS138/verilog/` 下看到我们需要的 Verilog 代码。
