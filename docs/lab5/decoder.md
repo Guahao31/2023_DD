@@ -77,3 +77,7 @@
     **推荐**你在画完图后使用 logisim 进行一些简单的仿真，确保线的连接没有严重问题。
 
 绘图完成后，请获得 Verilog 代码，如果你忘记如何操作，请回看实验四的[实验指导](../warmup/lab4.md#logisim-export-verilog)。一切顺利的话，你将在 Logisim 工作目录对应工程文件夹的 `D_74LS138/verilog/` 下看到我们需要的 Verilog 代码。
+
+### 仿真
+
+使用 Vivado 新建工程，将 `D_74LS138/verilog/circuit/` 以及 `D_74LS138/verilog/gates/` 中的代码导入到工程中。使用[仿真文件](../attachment/D_74LS138_tb.v)对生成的 Verilog 代码进行仿真。
