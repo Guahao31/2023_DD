@@ -46,7 +46,7 @@
 
 <img src="../pic/lab4/10.png" alt="命名" />
 
-### 导出为Verilog
+### 导出为Verilog {: #logisim-export-verilog}
 
 Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 Logisim 电路图转化为 Verilog 之后，方可在 Vivado 中进行电路实现。通过 Logisim 电路原理图导出 Verilog 的方法如下：
 
