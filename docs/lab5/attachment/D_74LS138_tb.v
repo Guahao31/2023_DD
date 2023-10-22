@@ -23,7 +23,6 @@ module D_74LS138_tb();
     .C(C)
    );
 // Initialize Inputs
-  integer i;
   initial begin
     C = 0; B = 0; A = 0;
     G = 1; G2A = 0; G2B = 0; #50;
