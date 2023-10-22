@@ -54,4 +54,17 @@
 
 首先补充介绍 logisim 的两个基本操作：修改电路名（对应 module 名）及分流器(Splitter)的使用。
 
-在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main。在
+在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main，选中电路 main。在 Properties 中可以修改电路名(Circuit Name)，本实验中你需要将电路名修改为 `D_74LS138`。  
+
+<img src="../pic/circuit_properties.png" style="zoom:50%">
+
+当一个信号有多条线，即**位宽**不为 1 时，我们可能需要分流器来将其**拆分**为多条线或从多个来源**汇集**。Logisim Wiring 库中提供了分流器，我们主要关注其 Properties 的含义，这里给出部分设置的解释：
+
+* Facing 与 Appearance：器件朝向与形态，主要为了电路图美观，可根据实际情况自行调整。
+* **Fan Out**：分流口数量，将原本的信号拆分成几份。
+* **Bit Width In**：信号位宽。
+* Bit 0/1/...：选择每一位分流所走的端口。
+
+比如我们有一个 4 位地址信号 `addr`，希望将地址信号的低 2 位分流给 `a`，将高两位分别分流给 `b, c`。在设置时，因为 `addr` 线宽为 4，我们将 Bit Width In 设置为 4；因为分流给 `a, b, c` 三线需要三个分流端口，设置 Fan Out 为 3；随后将四个 bit 分配给合适的分流端口即可，得到的器件如下图：  
+
+<img src="../pic/example_splitter.png" style="zoom:60%">
