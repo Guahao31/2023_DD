@@ -46,17 +46,17 @@
 
 我们约定 `A` 信号为最低位的地址信号，`C` 为最高位的地址信号，比如 `A, B, C` 信号值分别为 `0, 1, 1` 时，我们表达的地址为 `b110`，即对应选择 `Y6`。
 
-## 实现 74LS138
+## Logisim 基础操作-补充
 
-!!!tip "在开始本节前，请阅读[实验背景](#background)并理解译码器作用及74LS138 芯片的使能信号意义"
+本节将补充介绍几个 Logisim 的基本操作：修改电路名（对应 Verilog 代码中的 module 名）、分流器(Splitter)的使用以及自定义器件的使用。  
 
-### 绘制电路图
+### 修改电路名
 
-首先补充介绍 logisim 的两个基本操作：修改电路名（对应 module 名）及分流器(Splitter)的使用。
+在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main，选中电路 main。在 Properties 中可以修改电路名(Circuit Name)。  
 
-在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main，选中电路 main。在 Properties 中可以修改电路名(Circuit Name)，本实验中你需要将电路名修改为 `D_74LS138`。  
+<img src="../pic/circuit_properties.png" style="zoom:50%">  
 
-<img src="../pic/circuit_properties.png" style="zoom:50%">
+### 分流器
 
 当一个信号有多条线，即**位宽**不为 1 时，我们可能需要分流器来将其**拆分**为多条线或从多个来源**汇集**。Logisim Wiring 库中提供了分流器，我们主要关注其 Properties 的含义，这里给出部分设置的解释：
 
@@ -68,6 +68,26 @@
 比如我们有一个 4 位地址信号 `addr`，希望将地址信号的低 2 位分流给 `a`，将高两位分别分流给 `b, c`。在设置时，因为 `addr` 线宽为 4，我们将 Bit Width In 设置为 4；因为分流给 `a, b, c` 三线需要三个分流端口，设置 Fan Out 为 3；随后将四个 bit 分配给合适的分流端口即可，得到的器件如下图：  
 
 <img src="../pic/example_splitter.png" style="zoom:60%">  
+
+### 使用自定义器件
+
+一个工程中可以有**多个电路**，我们可以单击 Add Circuit 来为当前的工程添加一个电路。
+
+<img src="../pic/new_circuit.png" style="zoom:50%">
+
+与 Vivado 中的 Top 模块类似，在 Logisim 中也可以右键电路选择 Set As Main Circuit，这主要影响我们导出为 Verilog 时的模块层级。
+
+当一个工程中有多个电路时，我们可以在其中一个电路中使用另一个电路。**双击**进入我们希望编辑的电路，**单击**选择另一个电路，即可像使用库中的逻辑门一样使用这个电路组成新的逻辑。需要注意的是，如果你希望导出 Verilog，也需要为引入的模块进行命名。比如在完成了 `D_74LS138` 模块后，将其引入到新的电路中，并为其命名 `m0`，将在电路图中看到如下器件：
+
+<img src="../pic/new_module.png" style="zoom:70%">
+
+## 实现 74LS138
+
+!!!tip "在开始本节前，请阅读[实验背景](#background)并理解译码器作用及74LS138 芯片的使能信号意义"
+
+### 绘制电路图
+
+新建 Logisim 工程，修改电路名为 `D_74LS138`。
 
 以下为一种 74LS138 功能实现的电路图，你可以参考来完成电路图绘制：
 
