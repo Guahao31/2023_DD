@@ -81,3 +81,44 @@
 ### 仿真
 
 使用 Vivado 新建工程，将 `D_74LS138/verilog/circuit/` 以及 `D_74LS138/verilog/gates/` 中的代码导入到工程中。使用[仿真文件](../attachment/D_74LS138_tb.v)对生成的 Verilog 代码进行仿真。
+
+## D_74LS138 模块的简单应用
+
+!!! abstract
+    本节内容为使用刚刚完成的 `D_74LS138` 模块实现 Lab4 中的电路逻辑。
+    
+    我们将使用令一个简单的电路进行展示，请你在**浏览**本节内容后，完成[动手做](#simple-use_lets-do-it)小节的**另一个**电路的设计。
+
+> 时常做客小杨家的三只小狗甲、乙、丙性格古怪，甲独处或者甲和乙共处一室都会闹个不停，但只要有丙在世界就会清静下来。请你设计一个电路，帮助小杨判断今天是不是平静的一天。
+
+用 $A, B, C$ 分别表示甲、乙、丙今天是否前来；用 $P$ 表示结果，$P=1$ 意味着今天是平静的一天。很容易得到
+
+$$
+ P = \overline{(A + AB)\overline{C}} = \overline{A\overline{C}} = \overline{A} + C
+$$
+
+我们将上式转为**最小项**形式
+
+$$
+ P = \overline{A}BC + \overline{A}\ \overline{B}C + \overline{A}B\overline{C} + \overline{A}\ \overline{B}\ \overline{C} + ABC + A\overline{B}C
+$$
+
+在我们的实现中，输出端的“有效”为低电位 `0`，我们可将最小项的“或”取非变为“与非”，得到这个电路：
+
+<img src="../pic/application_for_report.png" style="display: block; margin: 0 auto; zoom: 55%">
+
+事实上，我们可以先关注 $\overline{P} = A\overline{C} = AB\overline{C} + A\overline{B}\ \overline{C}$，使用“与”门得到结果，即：
+
+<img src="../pic/another_application_for_report.png" style="display: block; margin: 0 auto; zoom: 55%">
+
+### 动手做 {: #simple-use_lets-do-it}
+
+请你实现 Lab4 中“动手做”小节的电路逻辑，其电路图如下：
+
+<img src="../../warmup/pic/lab4/logisim_example.png" style="zoom: 80%">
+
+请你根据上个实验得到的真值表，写出其对应的**最小项**或**最大项**形式；绘制电路图，电路名为 `LampCtrl`，要求使用 `D_74LS138` 模块。
+
+## 实验报告要求
+
+TODO
