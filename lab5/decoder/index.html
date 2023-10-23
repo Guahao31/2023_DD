@@ -413,6 +413,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#logisim-" class="md-nav__link">
+    Logisim 基础操作-补充
+  </a>
+  
+    <nav class="md-nav" aria-label="Logisim 基础操作-补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    修改电路名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分流器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    使用自定义器件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#74ls138_1" class="md-nav__link">
     实现 74LS138
   </a>
@@ -421,14 +455,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     绘制电路图
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     仿真
   </a>
   
@@ -460,9 +494,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     实验报告要求
   </a>
+  
+    <nav class="md-nav" aria-label="实验报告要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#74ls138_2" class="md-nav__link">
+    实现 74LS138
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    简单应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -627,6 +681,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#logisim-" class="md-nav__link">
+    Logisim 基础操作-补充
+  </a>
+  
+    <nav class="md-nav" aria-label="Logisim 基础操作-补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    修改电路名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分流器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    使用自定义器件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#74ls138_1" class="md-nav__link">
     实现 74LS138
   </a>
@@ -635,14 +723,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     绘制电路图
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     仿真
   </a>
   
@@ -674,9 +762,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     实验报告要求
   </a>
+  
+    <nav class="md-nav" aria-label="实验报告要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#74ls138_2" class="md-nav__link">
+    实现 74LS138
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    简单应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -699,10 +807,9 @@
 
 
 <h1 id="_1">实验五 译码器</h1>
-<div class="admonition danger">
-<p class="admonition-title">附件有效性</p>
-<p>目前仍未对本实验附件进行测试，可能存在问题</p>
-</div>
+<!-- !!!danger "附件有效性"
+    目前仍未对本实验附件进行测试，可能存在问题 -->
+
 <h2 id="_2">实验任务</h2>
 <ol>
 <li>使用 Logisim 绘制译码器。</li>
@@ -728,14 +835,12 @@
 <p>同样的，当我们希望使用两个 74LS138 芯片组成一个 4-16 译码器时，也可以使用两个信号中的一个用于分配高一半地址与第一半地址，而保留 <code>G</code> 主使能信号的作用（如果仅有一个 <code>G</code> 使能信号，它将被用于区分高低地址，而使得到的电路需要添加额外的逻辑来实现主使能信号的作用）。  </p>
 <h4 id="_6">地址信号</h4>
 <p>我们约定 <code>A</code> 信号为最低位的地址信号，<code>C</code> 为最高位的地址信号，比如 <code>A, B, C</code> 信号值分别为 <code>0, 1, 1</code> 时，我们表达的地址为 <code>b110</code>，即对应选择 <code>Y6</code>。</p>
-<h2 id="74ls138_1">实现 74LS138</h2>
-<div class="admonition tip">
-<p class="admonition-title">在开始本节前，请阅读<a href="#background">实验背景</a>并理解译码器作用及74LS138 芯片的使能信号意义</p>
-</div>
-<h3 id="_7">绘制电路图</h3>
-<p>首先补充介绍 logisim 的两个基本操作：修改电路名（对应 module 名）及分流器(Splitter)的使用。</p>
-<p>在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main，选中电路 main。在 Properties 中可以修改电路名(Circuit Name)，本实验中你需要将电路名修改为 <code>D_74LS138</code>。  </p>
-<p><img src="../pic/circuit_properties.png" style="zoom:50%"></p>
+<h2 id="logisim-">Logisim 基础操作-补充</h2>
+<p>本节将补充介绍几个 Logisim 的基本操作：修改电路名（对应 Verilog 代码中的 module 名）、分流器(Splitter)的使用以及自定义器件的使用。  </p>
+<h3 id="_7">修改电路名</h3>
+<p>在新建一个 Logisim 项目时，它默认为项目名 Untitled，当前电路名 main，选中电路 main。在 Properties 中可以修改电路名(Circuit Name)。  </p>
+<p><img src="../pic/circuit_properties.png" style="zoom:50%">  </p>
+<h3 id="_8">分流器</h3>
 <p>当一个信号有多条线，即<strong>位宽</strong>不为 1 时，我们可能需要分流器来将其<strong>拆分</strong>为多条线或从多个来源<strong>汇集</strong>。Logisim Wiring 库中提供了分流器，我们主要关注其 Properties 的含义，这里给出部分设置的解释：</p>
 <ul>
 <li>Facing 与 Appearance：器件朝向与形态，主要为了电路图美观，可根据实际情况自行调整。</li>
@@ -745,14 +850,26 @@
 </ul>
 <p>比如我们有一个 4 位地址信号 <code>addr</code>，希望将地址信号的低 2 位分流给 <code>a</code>，将高两位分别分流给 <code>b, c</code>。在设置时，因为 <code>addr</code> 线宽为 4，我们将 Bit Width In 设置为 4；因为分流给 <code>a, b, c</code> 三线需要三个分流端口，设置 Fan Out 为 3；随后将四个 bit 分配给合适的分流端口即可，得到的器件如下图：  </p>
 <p><img src="../pic/example_splitter.png" style="zoom:60%">  </p>
-<p>以下为一种 74LS138 功能实现的电路图，你可以参考来完成电路图绘制：</p>
+<h3 id="_9">使用自定义器件</h3>
+<p>一个工程中可以有<strong>多个电路</strong>，我们可以单击 Add Circuit 来为当前的工程添加一个电路。</p>
+<p><img src="../pic/new_circuit.png" style="zoom:50%"></p>
+<p>与 Vivado 中的 Top 模块类似，在 Logisim 中也可以右键电路选择 Set As Main Circuit，这主要影响我们导出为 Verilog 时的模块层级。</p>
+<p>当一个工程中有多个电路时，我们可以在其中一个电路中使用另一个电路。<strong>双击</strong>进入我们希望编辑的电路，<strong>单击</strong>选择另一个电路，即可像使用库中的逻辑门一样使用这个电路组成新的逻辑。需要注意的是，如果你希望导出 Verilog，也需要为引入的模块进行命名。比如在完成了 <code>D_74LS138</code> 模块后，将其引入到新的电路中，并为其命名 <code>m0</code>，将在电路图中看到如下器件：</p>
+<p><img src="../pic/new_module.png" style="zoom:70%"></p>
+<h2 id="74ls138_1">实现 74LS138</h2>
+<div class="admonition tip">
+<p class="admonition-title">在开始本节前，请阅读<a href="#background">实验背景</a>并理解译码器作用及74LS138 芯片的使能信号意义</p>
+</div>
+<h3 id="_10">绘制电路图</h3>
+<p>新建 Logisim 工程，修改电路名为 <code>D_74LS138</code>。</p>
+<p>以下为一种 74LS138 功能实现的电路图，你可以参考来完成电路图绘制，请确保端口名与下图一致：</p>
 <p><img src="../pic/D_74LS138_sch.png" style="display: block; margin: 0 auto; zoom:60%"></p>
 <div class="admonition tip">
 <p class="admonition-title">建议</p>
 <p><strong>推荐</strong>你在画完图后使用 logisim 进行一些简单的仿真，确保线的连接没有严重问题。</p>
 </div>
 <p>绘图完成后，请获得 Verilog 代码，如果你忘记如何操作，请回看实验四的<a href="../../warmup/lab4/#logisim-export-verilog">实验指导</a>。一切顺利的话，你将在 Logisim 工作目录对应工程文件夹的 <code>D_74LS138/verilog/</code> 下看到我们需要的 Verilog 代码。</p>
-<h3 id="_8">仿真</h3>
+<h3 id="_11" simulation-74LS138="simulation-74LS138">仿真</h3>
 <p>使用 Vivado 新建工程，将 <code>D_74LS138/verilog/circuit/</code> 以及 <code>D_74LS138/verilog/gates/</code> 中的代码导入到工程中。使用<a href="../attachment/D_74LS138_tb.v">仿真文件</a>对生成的 Verilog 代码进行仿真。</p>
 <h2 id="d_74ls138">D_74LS138 模块的简单应用</h2>
 <div class="admonition abstract">
@@ -778,9 +895,22 @@
 <h3 id="simple-use_lets-do-it">动手做</h3>
 <p>请你实现 Lab4 中“动手做”小节的电路逻辑，其电路图如下：</p>
 <p><img src="../../warmup/pic/lab4/logisim_example.png" style="zoom: 80%"></p>
-<p>请你根据上个实验得到的真值表，写出其对应的<strong>最小项</strong>或<strong>最大项</strong>形式；绘制电路图，电路名为 <code>LampCtrl</code>，要求使用 <code>D_74LS138</code> 模块。</p>
-<h2 id="_9">实验报告要求</h2>
-<p>TODO</p>
+<p>请你根据上个实验得到的真值表，写出其对应的<strong>最小项</strong>或<strong>最大项</strong>形式。</p>
+<p>绘制电路图，你可以使用和 Lab4 中完全相同的电路名、端口名，这样你不需要对仿真文件和约束文件进行任何修改；或者使用其他电路名和端口名，并自行修改仿真文件和约束文件。绘制完成后，导出为 Verilog 文件。</p>
+<p>使用上一节对 <code>D_74LS138</code> <a href="#simulation-74LS138">仿真</a>时新建的工程或新建一个工程，将本节得到的代码文件导入到工程中。使用 Lab4 提供的<a href="../../warmup/attachment/lab4_tb.v">仿真文件</a>进行仿真。确定器件仿真行为正常后，导入 Lab4 提供的<a href="../../warmup/attachment/constraints_lab4.xdc">约束文件</a>，生成比特流并烧录到板上，查看现象。</p>
+<h2 id="_12">实验报告要求</h2>
+<h3 id="74ls138_2">实现 74LS138</h3>
+<ol>
+<li>绘制电路图后，截图 Logisim 界面。</li>
+<li>在 Vivado 中仿真，截图仿真界面，要求波形缩放合适，<strong>并对波形进行解释</strong>。</li>
+</ol>
+<h3 id="_13">简单应用</h3>
+<ol>
+<li>给出电路图真值表对应的最小项或最大项形式。</li>
+<li>绘制电路图后，截图 Logisim 界面。</li>
+<li>在 Vivado 中仿真，截图仿真界面，要求波形缩放合适。</li>
+<li>记录 8 种输入下，LED 的亮灭情况，选取一种情况拍摄即可。</li>
+</ol>
 
 
 
