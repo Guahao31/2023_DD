@@ -68,4 +68,5 @@ nav:
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
+    - ISE 安装: Other/ISE_installation.md
 
