@@ -1,7 +1,7 @@
 # 七段数码管
 
-!!!danger "Pre-Release"
-    目前“实验报告要求”小节还没有完成
+<!-- !!!danger "Pre-Release"
+    目前“实验报告要求”小节还没有完成 -->
 
 ## 实验背景 {: #segment-example}
 
