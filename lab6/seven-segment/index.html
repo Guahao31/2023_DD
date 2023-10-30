@@ -427,6 +427,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    实验报告要求
+  </a>
+  
+    <nav class="md-nav" aria-label="实验报告要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mc14495_1" class="md-nav__link">
+    设计实现 MC14495 功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    简单使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-love-you-decoder" class="md-nav__link">
+    "I LovE YOU" decoder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -601,6 +635,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    实验报告要求
+  </a>
+  
+    <nav class="md-nav" aria-label="实验报告要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mc14495_1" class="md-nav__link">
+    设计实现 MC14495 功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    简单使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-love-you-decoder" class="md-nav__link">
+    "I LovE YOU" decoder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -620,10 +688,9 @@
 
 
 <h1 id="_1">七段数码管</h1>
-<div class="admonition danger">
-<p class="admonition-title">Pre-Release</p>
-<p>目前“实验报告要求”小节还没有完成</p>
-</div>
+<!-- !!!danger "Pre-Release"
+    目前“实验报告要求”小节还没有完成 -->
+
 <h2 id="segment-example">实验背景</h2>
 <p>七段数码管由 7 个 LED（发光二极管）组成，它们被分别命名为了 <code>a, b, c, d, e, f, g</code>，我们还添加了一个小数点 <code>p</code>。它们命名与位置的对应如下图：</p>
 <p><img src="../pic/one_display.png" style="zoom:50%"></p>
@@ -806,6 +873,24 @@ e = \overline{D_3}D_0 + \overline{D_3}D_2\overline{D_1} + \overline{D_2}\ \overl
 <p><img src="../pic/circuit_dispnum.png"></p>
 <p><strong>通过 Verilog 实现的同学</strong>，请参照上图直接书写 Verilog 代码，要求模块名 <code>DispNum</code>，端口名与上图相同。你可能需要了解模块实例化与 wire 信号的连续赋值。</p>
 <p>本节需要进行下板，你可以使用<a href="../attachment/constraints_lab6.xdc">约束文件</a>，生成比特流并下载。</p>
+<h2 id="_6">实验报告要求</h2>
+<h3 id="mc14495_1">设计实现 MC14495 功能</h3>
+<ul>
+<li><strong>使用 Verilog 实现</strong>则在报告中给出 <code>MyMC14495</code> 模块的完整代码，请尽量使用<a href="https://highlightcode.com/">高亮代码</a>方便助教查看；<strong>使用原理图实现</strong>则给出 Logisim 原理图截图。</li>
+<li>请给出完整的仿真代码，尽量使用高亮。</li>
+<li>给出仿真截图，要求缩放合适，并对波形进行解释。</li>
+</ul>
+<h3 id="_7">简单使用</h3>
+<ul>
+<li><strong>使用 Verilog 实现</strong>则在报告中给出 <code>DispNum</code> 模块的完整代码；<strong>使用原理图实现</strong>则给出 Logisim 原理图截图。</li>
+<li>下板，调整 <code>AN</code> 使<strong>只有最左侧和最右侧</strong>两个七段数码管亮起，<strong>拍摄</strong>输入为 <code>4'b0000, 4'b1000, 4'b1111</code> 时的图片。</li>
+</ul>
+<h3 id="i-love-you-decoder">"I LovE YOU" decoder</h3>
+<p>设计一个译码器，获得 3 位输入 <code>D2, D1, D0</code> 并转换为 7 位输出，当输入为 <code>0~7</code> 时分别输出 "I LovE YOU"，如下图所示：</p>
+<p><img src="../pic/iloveu_decoder.png" style="zoom:40%"></p>
+<p>请给出 <code>b, c, f, g</code> 这四个 LED 信号的<strong>真值表</strong>以及关于输入 <code>D2, D1, D0</code> 的<strong>布尔表达式</strong>。你可以直接化简也可以使用卡诺图化简，前者请给出详细步骤，后者请画出卡诺图并圈出你选择的项。</p>
+<p>真值表填写：</p>
+<p><img src="../pic/iloveu_truth_table.png" style="zoom:80%"></p>
 
 
 
