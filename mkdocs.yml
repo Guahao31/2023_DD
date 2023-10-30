@@ -66,6 +66,7 @@ nav:
     - 实验工具安装: warmup/tools_installation.md
     - Lab4-实验工具使用: warmup/lab4.md
   - Lab 5 - Decoder: lab5/decoder.md
+  - Lab 6 - 7-Segment Display Decoder: lab6/seven-segment.md
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
