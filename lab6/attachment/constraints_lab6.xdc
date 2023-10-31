@@ -20,10 +20,12 @@ set_property IOSTANDARD LVCMOS15 [get_ports {SW[6]}]
 set_property IOSTANDARD LVCMOS15 [get_ports {SW[7]}]
 
 # Key as inputs
-set_property PACKAGE_PIN V17 [get_ports {BTN[0]}]
+set_property PACKAGE_PIN V18 [get_ports {BTN[0]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {BTN[0]}]
-set_property PACKAGE_PIN W18 [get_ports {BTN[1]}]
+set_property PACKAGE_PIN V19 [get_ports {BTN[1]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {BTN[1]}]
+set_property PACKAGE_PIN V17 [get_ports {BTN_X}]
+set_property IOSTANDARD LVCMOS18 [get_ports {BTN_X}]
 
 # Arduino-Segment & AN
 set_property PACKAGE_PIN AD21 [get_ports {AN[0]}]

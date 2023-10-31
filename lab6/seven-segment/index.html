@@ -871,7 +871,15 @@ e = \overline{D_3}D_0 + \overline{D_3}D_2\overline{D_1} + \overline{D_2}\ \overl
 </ul>
 <p><strong>通过原理图实现的同学</strong>，请参照下图，使用刚刚绘制的 <code>MyMC14495</code> 电路绘制本节电路 <code>DispNum</code> 并导出，请注意红框圈出的分线器下标与连接端口的对应关系：</p>
 <p><img src="../pic/circuit_dispnum.png"></p>
+<div class="admonition note">
+<p class="admonition-title">Updated on 2023.10.31</p>
+<p>添加一个新的输出端口 <code>BTN_X</code> 并将其接地(GND)。</p>
+</div>
 <p><strong>通过 Verilog 实现的同学</strong>，请参照上图直接书写 Verilog 代码，要求模块名 <code>DispNum</code>，端口名与上图相同。你可能需要了解模块实例化与 wire 信号的连续赋值。</p>
+<div class="admonition note">
+<p class="admonition-title">Updated on 2023.10.31</p>
+<p>添加一个新的输出端口 <code>BTN_X</code>，并对其赋值为 <code>0</code>，即在模块中加入代码 <code>assign BTN_X = 1'b0;</code>。</p>
+</div>
 <p>本节需要进行下板，你可以使用<a href="../attachment/constraints_lab6.xdc">约束文件</a>，生成比特流并下载。</p>
 <h2 id="_6">实验报告要求</h2>
 <h3 id="mc14495_1">设计实现 MC14495 功能</h3>
