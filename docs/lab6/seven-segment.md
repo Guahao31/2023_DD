@@ -159,7 +159,13 @@ endmodule
 
 <img src="../pic/circuit_dispnum.png">
 
+!!! note "Updated on 2023.10.31"
+    添加一个新的输出端口 `BTN_X` 并将其接地(GND)。
+
 **通过 Verilog 实现的同学**，请参照上图直接书写 Verilog 代码，要求模块名 `DispNum`，端口名与上图相同。你可能需要了解模块实例化与 wire 信号的连续赋值。
+
+!!! note "Updated on 2023.10.31"
+    添加一个新的输出端口 `BTN_X`，并对其赋值为 `0`，即在模块中加入代码 `assign BTN_X = 1'b0;`。
 
 本节需要进行下板，你可以使用[约束文件](../attachment/constraints_lab6.xdc)，生成比特流并下载。
 
