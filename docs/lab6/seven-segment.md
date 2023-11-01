@@ -184,12 +184,14 @@ endmodule
 
 ### "I LovE YOU" decoder
 
-设计一个译码器，获得 3 位输入 `D2, D1, D0` 并转换为 7 位输出，当输入为 `0~7` 时分别输出 "I LovE YOU"，如下图所示：
+现需要设计一个译码器，它将 3 位输入转换为 7 位输出，输入 0~7 可以在七段数码管上依次打印出 "ILovEYOU"，预期效果如下图：
 
 <img src="../pic/iloveu_decoder.png" style="zoom:40%">
 
-请给出 `b, c, f, g` 这四个 LED 信号的**真值表**以及关于输入 `D2, D1, D0` 的**布尔表达式**。你可以直接化简也可以使用卡诺图化简，前者请给出详细步骤，后者请画出卡诺图并圈出你选择的项。
+输入信号从高到低记为 `D2, D1, D0`，输出信号 `a, b, c, d, e, f, g`。
 
-真值表填写：
+1. 补充下面的**真值表**。  
 
-<img src="../pic/iloveu_truth_table.png" style="zoom:80%">
+    <img src="../pic/updated_iloveu_truth_table.png" style="zoom:80%">
+
+2. 写出输出 `b, c, f, g` 关于输入的布尔表达式并进行**化简**。若通过公式推导化简，写出详细步骤；若通过卡诺图化简，请画出卡诺图并圈出所选项。  
