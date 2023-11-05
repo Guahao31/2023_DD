@@ -72,14 +72,14 @@ module Mux4to1b4(
 module clkdiv(
     input               clk,
     input               rst, // Active-high
-    output reg [31:0]   clkdiv
+    output reg [31:0]   div_res
 );
 
     always @(_some_code_here) begin     // When postive edge of `clk` comes
         if(rst == 1'b1) begin
-            clkdiv <= 32'b0;
+            div_res <= 32'b0;
         end else
-            clkdiv <= _some_code_here;  // Increase `clkdiv` by 1
+            div_res <= _some_code_here;  // Increase `div_res` by 1
         end
     end
 
@@ -118,11 +118,15 @@ endmodule
     endmodule
     ```
 
-### 动态扫描模块 DisplaySync
+### “计分板”应用
 
 如果你还不清楚“扫描”的含义，请查看[背景介绍](#background-sync-display)。
 
-模块定义为：
+本节目的是实现一个“计分板”应用，它将用到之前小节实现的模块以及即将实现的动态扫描模块。
+
+#### DisplaySync 模块
+
+本模块为动态扫描模块的子模块，起作用在于实现数字与使能信号的选择逻辑，模块定义为：
 
 ```verilog linenums="1"
 module DisplaySync(
@@ -142,3 +146,89 @@ module DisplaySync(
 ??? note "原理图"
     <img src="../pic/circuit_dispsync.png" style="zoom:60%">
 
+#### DisplayNumber 模块
+
+动态扫描模块，需要使用之前完成的 `clkdiv, DisplaySync, MyMC14495` 模块。
+
+使用时钟分频器获得合适的扫描信号，这里我们选用 `clkdiv[18:17]` 两位信号。使用刚刚编写完成的 `DisplaySync` 模块选择合适的数字和使能信号，并将四位数字和小数点控制信号输出到 `MyMC14495` 模块实例中得到七段信息。
+
+模块定义如下：
+
+```verilog linenums="1"
+module DisplayNumber(
+    input        clk,
+    input        rst,
+    input [15:0] hexs,
+    input [ 3:0] points,
+    input [ 3:0] LEs,
+    output[ 3:0] AN,
+    output[ 7:0] SEGMENT
+);
+```
+
+需要注意的是，`clkdiv` 子模块是使用 Verilog 编写的，不能直接导入到 Logisim 中，如果你仍然希望通过原理图的方式完成实验，请自行在 Logisim 工程中添加电路 `clkdiv` 并在电路中给出端口 `clk, rst, clkdiv[31:0]`，**不需要做其他连接**，在完成导出后，将导出文件中的 `verilog/circuit/clkdiv.v` 中的内容替换为之前小节的代码即可。如果希望**使用其他 Logisim 工程中的电路**，可以选择 `File - Merge` 将其他工程中的电路拷贝到当前工程下。下图为原理图：
+
+<img src="../pic/circuit_displaynumber.png">
+
+#### 顶层模块
+
+作为顶层模块，将使用之前完成的所有模块作为子模块。实现一个“计分板”应用，在 Arduino 上七段数码管查看数字结果，使用开关控制亮灭与小数点，使用四个按钮为数字实现自增。
+
+顶层模块代码如下：
+
+??? note "top.v"
+    ```verilog linenums="1"
+    module top(
+        input clk,
+        input [7:0] SW,
+        input [3:0] btn,
+        output[3:0] AN,
+        output[3:0] SEGMENT
+    );
+
+        wire [15:0] num;
+
+        CreateNumber create_inst(
+            .btn(btn),
+            .num(num)
+        );
+
+        DisplayNumber disp_inst(
+            .clk(clk),
+            .rst(1'b0),
+            .hexs(num),
+            .points(SW[7:4]),
+            .LEs(SW[3:0]),
+            .AN(AN),
+            .SEGMENT(SEGMENT)
+        )
+
+    endmodule
+    ```
+
+可以使用提供的[约束文件](../attachment/constraints_lab7.xdc)，获得 bitstream 并下载到板子上。因为我们并没有将 `btn` 信号进行去抖动处理，所以按钮按下时数字增长很多下是正常的。
+
+## 实验报告要求
+
+### 多路选择器的实现
+
+1. 模块 `Mux4to1` 的原理图截图。
+2. 模块 `Mux4to1b4` 的 Verilog 代码或原理图（使用原理图实现的同学请提交原理图截图）。
+3. 模块 `Mux4to1b4` 的仿真代码，波形截图及对波形的解释。
+
+### 时钟分频
+
+给出你完成的 `clkdiv` 模块代码。
+
+### 简单应用
+
+1. 模块 `DisplaySync` 的 Verilog 代码或原理图。
+2. 模块 `DisplayNumber` 的 Verilog 代码或原理图。
+3. 下板实验的图片。
+
+### 思考题
+
+1. 在实现 `DisplayNumber` 模块时，我们将时钟分频器输出 `div_res` 的 17 与 18 位作为扫描信号，请问数码管闪烁的**频率**是多少（请主要考虑**某个特定数码管**每秒闪烁多少次）？如果希望闪烁的频率加快为之前的 4 倍（频率从 *f* 变为 *4f*），应选择什么作为扫描信号？
+2. 在[实验背景](#background-sync-display)中我们提到“需要注意使能信号的选择和输出数字的选择要同步，否则打印数字的位置和数值可能会与预期不符。”
+
+    **请对这个错误情况进行分析**：使用分频器输出 `div_res[18:17]` 作为**输出数字**的多路选择器的选择信号，使用分频器输出 `{div_res[19], div_res[17]}` 作为**输出使能信号**的多路选择器的选择信号。你可以使用一个简单的例子进行说明，比如画出这个错误的扫描过程中输出数字和使能信号的变化。
