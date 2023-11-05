@@ -23,4 +23,32 @@
 
 ## 多路选择器的实现
 
+### 一位 4-1 多路选择器
+
+!!! tip "必须使用原理图完成"
+    模块 `Mux4to1` 必须使用原理图完成
+
+可以参考下图完成 `Mux4to1` 模块的设计，请注意修改电路名并确保端口名与图相同（选择信号 `S`）：
+
+<img src="../pic/circuit_mux4to1.png" style="zoom:60%">
+
+### 四位 4-1 多路选择器
+
+将一位多路选择器拓展为四位时，可以重用地址选择的信号（即原理图中的 2-4 译码器部分），可以直接使用 Verilog 完成，模块定义如下：
+
+```verilog linenums="1"
+module Mux4to1b4 (
+    input  [1:0] S,
+    input  [3:0] D0,
+    input  [3:0] D1,
+    input  [3:0] D2,
+    input  [3:0] D3,
+    output [3:0] Y
+);
+```
+
+如果希望通过原理图实现，可以参考下图：
+
+??? note "原理图"
+    <img src="../pic/circuit_mux4to1b4.png">
 
