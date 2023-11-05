@@ -21,7 +21,7 @@
 * N 分频：将输入时钟信号的频率除以 N。可以通过计数器和用于重置的逻辑电路实现，计数器在每次时钟周期递增直到 N-1，重置归零并产生一个输出时钟脉冲。
 * 锁相环(Phase-Locked Loop, PLL)：可以通过比较输入时钟信号和内部参考时钟信号的相位差来控制输出时钟信号的频率。
 
-### 四位七段数码管动态显示
+### 四位七段数码管动态显示 {: #background-sync-display}
 
 在之前的实验中，我们提到因为 Arduino 上四个七段数码管共用管脚，因此同一时间只能显示相同的数字。一个可行的方式是利用[视觉暂留效应](https://zh.wikipedia.org/zh-hans/%E8%A6%96%E8%A6%BA%E6%9A%AB%E7%95%99)，使用扫描的逻辑，每次只亮起一个数码管并显示对应数字，四个数码管循环显示。当每一个数码管的数字显示频率至少达到 10 次/秒时，我们会认为这四个七段数码管在“同时”显示了四个不同的数字。
 
@@ -117,4 +117,28 @@ endmodule
 
     endmodule
     ```
+
+### 动态扫描模块 DisplaySync
+
+如果你还不清楚“扫描”的含义，请查看[背景介绍](#background-sync-display)。
+
+模块定义为：
+
+```verilog linenums="1"
+module DisplaySync(
+    input [ 1:0] scan,
+    input [15:0] hexs,
+    input [ 3:0] points,
+    input [ 3:0] LEs,
+    output[ 3:0] HEX,
+    output[ 3:0] AN,
+    output       point,
+    output       LE
+);
+```
+
+原理图如下，图中实例名仅为展示方便，确保修改电路名和端口名一致即可。实例 `mux_AN` 的四个输入 `D0~D3` 分别输入常数 `0b1110, 0b1101, 0b1011, 0b0111`，使用原理图实现的同学可以在 `Wiring` 中找到 `Constant` 元件。
+
+??? note "原理图"
+    <img src="../pic/circuit_dispsync.png" style="zoom:60%">
 
