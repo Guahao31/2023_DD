@@ -37,7 +37,7 @@
 将一位多路选择器拓展为四位时，可以重用地址选择的信号（即原理图中的 2-4 译码器部分），可以直接使用 Verilog 完成，模块定义如下：
 
 ```verilog linenums="1"
-module Mux4to1b4 (
+module Mux4to1b4(
     input  [1:0] S,
     input  [3:0] D0,
     input  [3:0] D1,
@@ -52,3 +52,24 @@ module Mux4to1b4 (
 ??? note "原理图"
     <img src="../pic/circuit_mux4to1b4.png">
 
+## 时钟分频
+
+实现一个简单的时钟分频器，其输出在每个**时钟信号上升沿**自增。复位信号为同步复位，当时钟信号的正边沿到来且复位信号为有效时（本实验中复位信号为高电平有效）进行复位。请补全下列代码，实现 `clkdiv` 模块：
+
+```verilog linenums="1"
+module clkdiv(
+    input               clk,
+    input               rst, // Active-high
+    output reg [31:0]   clkdiv
+);
+
+    always @(_some_code_here) begin     // When postive edge of `clk` comes
+        if(rst == 1'b1) begin
+            clkdiv <= 32'b0;
+        end else
+            clkdiv <= _some_code_here;  // Increase `clkdiv` by 1
+        end
+    end
+
+endmodule
+```
