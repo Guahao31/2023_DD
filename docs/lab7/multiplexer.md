@@ -78,7 +78,7 @@ module clkdiv(
     always @(_some_code_here) begin     // When postive edge of `clk` comes
         if(rst == 1'b1) begin
             div_res <= 32'b0;
-        end else
+        end else begin
             div_res <= _some_code_here;  // Increase `div_res` by 1
         end
     end
@@ -183,7 +183,7 @@ module DisplayNumber(
         input [7:0] SW,
         input [3:0] btn,
         output[3:0] AN,
-        output[3:0] SEGMENT
+        output[7:0] SEGMENT
     );
 
         wire [15:0] num;
@@ -201,7 +201,7 @@ module DisplayNumber(
             .LEs(SW[3:0]),
             .AN(AN),
             .SEGMENT(SEGMENT)
-        )
+        );
 
     endmodule
     ```
