@@ -1,6 +1,12 @@
 # Filename: constraints_lab7.xdc
 ## Constraints file for Lab7
 
+# Main clock
+set_property PACKAGE_PIN AC18 [get_ports clk]
+set_property IOSTANDARD LVCMOS18 [get_ports clk]
+
+create_clock -period 10.000 -name clk [get_ports "clk"]
+
 # Switches as inputs
 set_property PACKAGE_PIN AA10 [get_ports {SW[0]}]
 set_property PACKAGE_PIN AB10 [get_ports {SW[1]}]
