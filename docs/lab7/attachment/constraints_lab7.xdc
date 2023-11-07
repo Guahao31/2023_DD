@@ -37,6 +37,8 @@ set_property IOSTANDARD LVCMOS18 [get_ports {btn[1]}]
 set_property PACKAGE_PIN W14 [get_ports {btn[0]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {btn[0]}]
 
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets btn*]
+
 # Arduino-Segment & AN
 set_property PACKAGE_PIN AD21 [get_ports {AN[0]}]
 set_property PACKAGE_PIN AC21 [get_ports {AN[1]}]
