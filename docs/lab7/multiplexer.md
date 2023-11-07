@@ -66,7 +66,7 @@ module Mux4to1b4(
 
 ## 时钟分频
 
-实现一个简单的时钟分频器，其输出在每个**时钟信号上升沿**自增。复位信号为同步复位，当时钟信号的正边沿到来且复位信号为有效时（本实验中复位信号为高电平有效）进行复位。请补全下列代码，实现 `clkdiv` 模块：
+实现一个简单的时钟分频器，其输出在每个**时钟信号上升沿**自增。复位信号为同步复位，当时钟信号的正边沿到来且复位信号为有效时（本实验中复位信号为高电平有效）进行复位。`clkdiv` 模块代码如下：
 
 ```verilog linenums="1"
 module clkdiv(
@@ -75,11 +75,11 @@ module clkdiv(
     output reg [31:0]   div_res
 );
 
-    always @(_some_code_here) begin     // When postive edge of `clk` comes
+    always @(posedge clk) begin     // When postive edge of `clk` comes
         if(rst == 1'b1) begin
             div_res <= 32'b0;
         end else begin
-            div_res <= _some_code_here;  // Increase `div_res` by 1
+            div_res <= div_res + 32'b1;  // Increase `div_res` by 1
         end
     end
 
@@ -215,10 +215,6 @@ module DisplayNumber(
 1. 模块 `Mux4to1` 的原理图截图。
 2. 模块 `Mux4to1b4` 的 Verilog 代码或原理图（使用原理图实现的同学请提交原理图截图）。
 3. 模块 `Mux4to1b4` 的仿真代码，波形截图及对波形的解释。
-
-### 时钟分频
-
-给出你完成的 `clkdiv` 模块代码。
 
 ### 简单应用
 
