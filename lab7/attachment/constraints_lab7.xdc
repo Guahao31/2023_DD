@@ -26,6 +26,8 @@ set_property IOSTANDARD LVCMOS15 [get_ports {SW[6]}]
 set_property IOSTANDARD LVCMOS15 [get_ports {SW[7]}]
 
 # Key as inputs
+set_property PACKAGE_PIN W16 [get_ports BTN_X]
+set_property IOSTANDARD LVCMOS18 [get_ports BTN_X]
 set_property PACKAGE_PIN V18 [get_ports {btn[3]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {btn[3]}]
 set_property PACKAGE_PIN V19 [get_ports {btn[2]}]
