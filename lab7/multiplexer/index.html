@@ -1093,7 +1093,7 @@
 </ol>
 <h3 id="_13">思考题</h3>
 <ol>
-<li>在实现 <code>DisplayNumber</code> 模块时，我们将时钟分频器输出 <code>div_res</code> 的 17 与 18 位作为扫描信号，请问数码管闪烁的<strong>频率</strong>是多少（请主要考虑<strong>某个特定数码管</strong>每秒闪烁多少次）？如果希望闪烁的频率加快为之前的 4 倍（频率从 <em>f</em> 变为 <em>4f</em>），应选择什么作为扫描信号？</li>
+<li>在实现 <code>DisplayNumber</code> 模块时，我们将时钟分频器输出 <code>div_res[18:17]</code> 作为扫描信号，请问 <code>div_res[17]</code> 的时钟频率与时钟分频器输入 <code>clk</code> 的时钟频率的<strong>比例关系</strong>为何？如果希望<strong>扫描的频率加快</strong>为之前的 4 倍（频率从 <em>f</em> 变为 <em>4f</em>），应选择 <code>div_res</code> 的哪几位作为扫描信号？</li>
 <li>
 <p>在<a href="#background-sync-display">实验背景</a>中我们提到“需要注意使能信号的选择和输出数字的选择要同步，否则打印数字的位置和数值可能会与预期不符。”</p>
 <p><strong>请对这个错误情况进行分析</strong>：使用分频器输出 <code>div_res[18:17]</code> 作为<strong>输出数字</strong>的多路选择器的选择信号，使用分频器输出 <code>{div_res[19], div_res[17]}</code> 作为<strong>输出使能信号</strong>的多路选择器的选择信号。你可以使用一个简单的例子进行说明，比如画出这个错误的扫描过程中输出数字和使能信号的变化。</p>
