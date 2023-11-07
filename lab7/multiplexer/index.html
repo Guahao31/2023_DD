@@ -528,20 +528,13 @@
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
-    时钟分频
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
     简单应用
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     思考题
   </a>
   
@@ -804,20 +797,13 @@
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
-    时钟分频
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
     简单应用
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     思考题
   </a>
   
@@ -901,7 +887,7 @@
 </details>
 <p>实现后，请自行书写仿真代码，在 Vivado 中进行仿真。</p>
 <h2 id="_6">时钟分频</h2>
-<p>实现一个简单的时钟分频器，其输出在每个<strong>时钟信号上升沿</strong>自增。复位信号为同步复位，当时钟信号的正边沿到来且复位信号为有效时（本实验中复位信号为高电平有效）进行复位。请补全下列代码，实现 <code>clkdiv</code> 模块：</p>
+<p>实现一个简单的时钟分频器，其输出在每个<strong>时钟信号上升沿</strong>自增。复位信号为同步复位，当时钟信号的正边沿到来且复位信号为有效时（本实验中复位信号为高电平有效）进行复位。<code>clkdiv</code> 模块代码如下：</p>
 <div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -922,11 +908,11 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">div_res</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">);</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="n">_some_code_here</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w">     </span><span class="c1">// When postive edge of `clk` comes</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w">     </span><span class="c1">// When postive edge of `clk` comes</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">rst</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">            </span><span class="n">div_res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32</span><span class="mb">&#39;b0</span><span class="p">;</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">            </span><span class="n">div_res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">_some_code_here</span><span class="p">;</span><span class="w">  </span><span class="c1">// Increase `div_res` by 1</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">            </span><span class="n">div_res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">div_res</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">32</span><span class="mb">&#39;b1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Increase `div_res` by 1</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="k">end</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">end</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>
@@ -1099,15 +1085,13 @@
 <li>模块 <code>Mux4to1b4</code> 的 Verilog 代码或原理图（使用原理图实现的同学请提交原理图截图）。</li>
 <li>模块 <code>Mux4to1b4</code> 的仿真代码，波形截图及对波形的解释。</li>
 </ol>
-<h3 id="_12">时钟分频</h3>
-<p>给出你完成的 <code>clkdiv</code> 模块代码。</p>
-<h3 id="_13">简单应用</h3>
+<h3 id="_12">简单应用</h3>
 <ol>
 <li>模块 <code>DisplaySync</code> 的 Verilog 代码或原理图。</li>
 <li>模块 <code>DisplayNumber</code> 的 Verilog 代码或原理图。</li>
 <li>下板实验的图片。</li>
 </ol>
-<h3 id="_14">思考题</h3>
+<h3 id="_13">思考题</h3>
 <ol>
 <li>在实现 <code>DisplayNumber</code> 模块时，我们将时钟分频器输出 <code>div_res</code> 的 17 与 18 位作为扫描信号，请问数码管闪烁的<strong>频率</strong>是多少（请主要考虑<strong>某个特定数码管</strong>每秒闪烁多少次）？如果希望闪烁的频率加快为之前的 4 倍（频率从 <em>f</em> 变为 <em>4f</em>），应选择什么作为扫描信号？</li>
 <li>
