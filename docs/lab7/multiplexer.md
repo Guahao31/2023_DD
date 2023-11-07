@@ -183,8 +183,11 @@ module DisplayNumber(
         input [7:0] SW,
         input [3:0] btn,
         output[3:0] AN,
-        output[7:0] SEGMENT
+        output[7:0] SEGMENT,
+        output      BTN_X
     );
+
+        assign BTN_X = 1'b0;
 
         wire [15:0] num;
 
@@ -204,9 +207,10 @@ module DisplayNumber(
         );
 
     endmodule
+
     ```
 
-可以使用提供的[约束文件](../attachment/constraints_lab7.xdc)，获得 bitstream 并下载到板子上。因为我们并没有将 `btn` 信号进行去抖动处理，所以按钮按下时数字增长很多下是正常的。
+可以使用提供的[约束文件](../attachment/constraints_lab7.xdc)（会得到报错 `Place 30-574`，请仔细查看报错，使用报错中给出的），获得 bitstream 并下载到板子上。因为我们并没有将 `btn` 信号进行去抖动处理，所以按钮按下时数字增长很多下是正常的。
 
 ## 实验报告要求
 
