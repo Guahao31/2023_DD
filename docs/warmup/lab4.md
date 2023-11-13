@@ -198,7 +198,7 @@ SWORD 板上有 16 个开关，我们之前将 `I0, I1, I2` 分别约束到了**
 
 3. 导出 Verilog 后，找到工作目录下 `verilog/circuit/` 中的文件。**截图**代码内容或将高亮代码粘贴在实验报告中。
 
-### Vivado 的基本操作
+### Vivado 的基本操作 {: #vivado-report}
 
 1. 完成**添加或创建文件**步骤后，**截图**源代码结构部分，类似下图，点按图中圈出部分可以展开所有目录。要求必须展示出 **Design Sources, Constraints, Simulation Sources** 的内容。
 
