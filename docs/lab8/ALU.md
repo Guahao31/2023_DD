@@ -54,7 +54,7 @@ $$
 请确保模块定义为：
 
 ```verilog linenums="1"
-module Adder1b (
+module Adder1b(
     input A,
     input B,
     input Cin,
@@ -70,12 +70,13 @@ module Adder1b (
 
 根据[背景介绍](#sub-adder)，减数 `B` 的补码可以写作 `~B + 1`。观察加法的 `B` 与减法的 `-B`，差别在于加法器第二个操作数**是否取反**以及是否有最低的进位，联想到异或操作的特性（一个操作数为 1 时，结果为另一个操作数的反；一个操作数为 0 时，结果与另一个操作数相同），可以得到以下原理图：
 
-<img src="../pic/circuit_addsub.png">
+??? note "原理图"
+    <img src="../pic/circuit_addsub.png">
 
 请确保模块定义为：
 
 ```verilog linenums="1"
-module AddSub4b (
+module AddSub4b(
     input [3:0] A,
     input [3:0] B,
     input       Ctrl,
@@ -86,3 +87,22 @@ module AddSub4b (
 
 ## ALU 实现
 
+本节将实现一个简单的 4 位 ALU，进行加减法、与、或操作。模块定义为：
+
+```verilog linenums="1"
+module ALU(
+    input [3:0] A,
+    input [3:0] B,
+/////// op: 0 for ADD; 1 for SUB; 2 for AND; 3 for OR ///////
+    input [1:0] op,
+    output[3:0] res,
+    output      Cout // 0 when AND & OR
+)
+```
+
+如果你希望通过原理图的方式实现，请自行绘制 `And2b4` 与 `Or2b4` 两个模块，模块功能为 4 位输入**按位与/或**，原理图如下：
+
+??? note "原理图"
+    <img src="../pic/circuit_ALU.png">
+
+请自行设计仿真文件，对 `ALU` 进行**仿真**，要求**每个操作使用至少两组数据**，需要注意对加减法的边界数据进行测试。
