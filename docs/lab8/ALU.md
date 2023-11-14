@@ -169,10 +169,10 @@ endmodule
     initial num <= INIT_HEXES;
 
     // D(the next num[3:0]) is always greater than current num[3:0] by 1
-    AddSub4b a0(.A(num[15:12]), .B(4'b0001), .Ctrl(sw[0]), .S(A));
-    AddSub4b a1(.A(num[11: 8]), .B(4'b0001), .Ctrl(sw[1]), .S(B));
-    AddSub4b a2(.A(num[ 7: 4]), .B(4'b0001), .Ctrl(sw[2]), .S(C));
-    AddSub4b a3(.A(num[ 3: 0]), .B(4'b0001), .Ctrl(sw[3]), .S(D));
+    AddSub4b a0(.A(num[15:12]), .B(4'b0001), .Ctrl(sw[3]), .S(A));
+    AddSub4b a1(.A(num[11: 8]), .B(4'b0001), .Ctrl(sw[2]), .S(B));
+    AddSub4b a2(.A(num[ 7: 4]), .B(4'b0001), .Ctrl(sw[1]), .S(C));
+    AddSub4b a3(.A(num[ 3: 0]), .B(4'b0001), .Ctrl(sw[0]), .S(D));
 
     // When pressing btn[0] num[3:0]++
     always @(posedge btn[3]) num[15:12] <= A;
@@ -233,7 +233,7 @@ endmodule
         pbdebounce m0(.clk(clk_div[17]), .button(BTN[0]), .pbreg(btn_out[0]));
         pbdebounce m1(.clk(clk_div[17]), .button(BTN[1]), .pbreg(btn_out[1]));
 
-        CreateNumber m3(.btn(btn_out), .sw({2'b0, SW1}), .num(num)); // Attachment
+        CreateNumber m3(.btn({2'b0, btn_out}), .sw({2'b0, SW1}), .num(num)); // Attachment
 
         // The ALU module you wrote
         ALU m5(    .A(num[3:0]), 
