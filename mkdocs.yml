@@ -69,6 +69,7 @@ nav:
   - Lab 6 - 7-Segment Display Decoder: lab6/seven-segment.md
   - Lab 7 - Multiplexer: lab7/multiplexer.md
   - Lab 8 - ALU: lab8/ALU.md
+  - Lab 9 - Latches & Flip-flops: lab9/latches_flip_flops.md
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
