@@ -3,7 +3,7 @@
 ## 实验背景
 
 !!! tip "关于本节"
-    本节内容多来自于维基百科 [Flip-flop(electronics)](https://en.wikipedia.org/wiki/Flip-flop_(electronics)) 词条。
+    本节内容多来自维基百科 [Flip-flop(electronics)](https://en.wikipedia.org/wiki/Flip-flop_(electronics)) 词条。
 
 **锁存器**(Latch)以及**触发器**(Flip-flop)被称为双稳态多谐振荡器(Bistable multivibrator)，即拥有两个稳定状态并可以用来记录和表达两种状态信息的电子部件，可以用来存储 **1 比特**的数据（两种状态分别为 0 和 1）。
 
