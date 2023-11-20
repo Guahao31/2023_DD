@@ -29,9 +29,9 @@ SR 锁存器通过两个输入端口(`S, R`)对锁存器保存数据进行修改
 
 #### 门控 SR 锁存器
 
-为 SR 锁存器添加一个输入 `C`，只有它的值为 1 时才能对锁存器存储的值进行修改。以门控 $\overline{SR}$ 锁存器的原理图为例：
+为 SR 锁存器添加一个输入 `C`，只有它的值为 1 时才能对锁存器存储的值进行修改。以门控 SR 锁存器的原理图为例：
 
-<img src="../pic/circuit-csnrn-latch.png" style="zoom: 75%">
+<img src="../pic/circuit-csr-latch.png" style="zoom: 75%">
 
 #### D 锁存器 & 门控 D 锁存器
 
