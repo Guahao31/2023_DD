@@ -170,7 +170,7 @@ module ET_D_flip_flop(
 ### 简单工程
 
 !!! danger
-    目前暂未找到绕过 Combinational Loop 检查的方法。
+    暂未找到绕过 Combinational Loop 检查的方法。
 
 <!-- 使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。 -->
 
