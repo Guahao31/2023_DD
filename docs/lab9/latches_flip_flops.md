@@ -90,3 +90,84 @@ SR 锁存器通过两个输入端口(`S, R`)对锁存器保存数据进行修改
     * **输出处理**阶段的锁存器会根据输入处理的锁存器输出进行 set 或 reset，即改变或维持触发器的输出
 
 观察可以发现，这一设计和门控 D 锁存器很相似，都是将输入 `D` 的状态（0 或 1）变为 $\overline{SR}$ 锁存器的输入（01 或 10）。区别在于，门控 D 锁存器只使用一个 NAND 门进行转换而正边沿 D 触发器使用了 $\overline{SR}$ 锁存器进行转换，其中输入阶段的两个锁存器的作用是“锁住”上升沿得到的低电位输出（有效电位）。
+
+## 实验内容
+
+!!! note "请注意"
+    本实验所有锁存器和触发器都必须使用原理图实现
+
+### 锁存器
+
+#### SR 锁存器
+
+实现 SR 锁存器并仿真验证其功能，要求端口定义如下：
+
+```verilog linenums="1"
+module SR_latch(
+    input R,
+    input S,
+    output Q,
+    output Qbar
+)
+```
+
+#### 门控 SR 锁存器
+
+实现门控 SR 锁存器并仿真验证其功能，要求端口定义如下：
+
+```verilog linenums="1"
+module C_SR_latch(
+    input R,
+    input S,
+    input C,
+    output Q,
+    output Qbar
+)
+```
+
+#### D 锁存器
+
+实现门控 D 锁存器并仿真验证其功能，要求体现“空翻”现象，要求端口定义如下：
+
+```verilog linenums="1"
+module C_D_latch(
+    input D,
+    input C,
+    output Q,
+    output Qbar
+)
+```
+
+### 触发器
+
+#### 正边沿 D 主从触发器
+
+实现正边沿 D 主从触发器并仿真验证其功能，要求将**主锁存器输出**接出进行查看，要求端口定义如下：
+
+```verilog linenums="1"
+module MS_D_flip_flop(
+    input D,
+    input clk,
+    output mid_Q,
+    output Q,
+    output Qbar
+)
+```
+
+#### 正边沿 D 触发器
+
+实现正边沿 D 触发器并仿真验证其功能，要求端口定义如下：
+
+```verilog linenums="1"
+module ET_D_flip_flop(
+    input D,
+    input clk,
+    output Q,
+    output Qbar
+)
+```
+
+### 简单工程
+
+使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。
+
