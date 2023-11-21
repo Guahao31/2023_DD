@@ -501,7 +501,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#lab-con" class="md-nav__link">
     实验内容
   </a>
   
@@ -509,7 +509,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     锁存器
   </a>
   
@@ -543,7 +543,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     触发器
   </a>
   
@@ -570,8 +570,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     简单工程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    实验报告要求
   </a>
   
 </li>
@@ -776,7 +783,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#lab-con" class="md-nav__link">
     实验内容
   </a>
   
@@ -784,7 +791,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     锁存器
   </a>
   
@@ -818,7 +825,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     触发器
   </a>
   
@@ -845,8 +852,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     简单工程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    实验报告要求
   </a>
   
 </li>
@@ -922,7 +936,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>一次性采样问题</strong> TODO</p>
+<p><strong>一次性采样问题</strong>，主从触发器在主锁存器门控有效时，可以任意改变自身状态，因此我们需要将输入信号维持至少半个时钟周期（即时钟低电平时），如果有信号“毛刺”会导致主锁存器的状态有不期望的变化，因此产生了“一次性采样”问题。</p>
 <h4 id="_7">边沿触发器</h4>
 <p>以正边沿 D 触发器为例，在这个触发器的设计里包括两个阶段<strong>输入处理</strong>与<strong>输出处理</strong>。输入处理部分由图中左侧的两个 <span class="arithmatex">\(\overline{SR}\)</span> 锁存器构成，它处理时钟信号 <code>clk</code> 和数据信号 <code>D</code>以提供给输出处理部分锁存器正确的输入。</p>
 <p><img src="../pic/circuit-et-d-ff.png" style="zoom: 80%"></p>
@@ -948,12 +962,12 @@
 </li>
 </ul>
 <p>观察可以发现，这一设计和门控 D 锁存器很相似，都是将输入 <code>D</code> 的状态（0 或 1）变为 <span class="arithmatex">\(\overline{SR}\)</span> 锁存器的输入（01 或 10）。区别在于，门控 D 锁存器只使用一个 NAND 门进行转换而正边沿 D 触发器使用了 <span class="arithmatex">\(\overline{SR}\)</span> 锁存器进行转换，其中输入阶段的两个锁存器的作用是“锁住”上升沿得到的低电位输出（有效电位）。</p>
-<h2 id="_8">实验内容</h2>
+<h2 id="lab-con">实验内容</h2>
 <div class="admonition note">
 <p class="admonition-title">请注意</p>
 <p>本实验所有锁存器和触发器都必须使用原理图实现</p>
 </div>
-<h3 id="_9">锁存器</h3>
+<h3 id="_8">锁存器</h3>
 <h4 id="sr_2">SR 锁存器</h4>
 <p>实现 SR 锁存器并仿真验证其功能，要求端口定义如下：</p>
 <div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -998,7 +1012,7 @@
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Qbar</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="_10">触发器</h3>
+<h3 id="_9">触发器</h3>
 <h4 id="sr_4">正边沿 SR 主从触发器</h4>
 <p>实现正边沿 SR 主从触发器并仿真验证其功能，要求将<strong>主锁存器输出</strong>接出进行查看，同时需要体现“一次性采样”问题，要求端口定义如下：</p>
 <div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
@@ -1031,12 +1045,16 @@
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Qbar</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="_11">简单工程</h3>
+<h3 id="_10">简单工程</h3>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>暂未找到绕过 Combinational Loop 检查的方法。</p>
 </div>
 <!-- 使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。 -->
+
+<h3 id="_11">实验报告要求</h3>
+<p>完成<a href="#lab-con">实验内容</a>中的所有小节，给出使用的 testbench 代码、波形及解释。</p>
+<p>本实验不需要下板与验收。</p>
 
 
 
