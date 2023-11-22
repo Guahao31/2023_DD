@@ -171,7 +171,7 @@ module ET_D_flip_flop(
 ### 简单工程
 
 !!! danger
-    暂未找到绕过 Combinational Loop 检查的方法。
+    暂未找到绕过 Combinational Loop 检查的方法。其他班级同学尝试综合超过五分钟就可以放弃了，在 `runs/` 下的日志文件可以看到 timing loop 的提示。
 
 <!-- 使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。 -->
 
