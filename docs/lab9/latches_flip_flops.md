@@ -170,7 +170,7 @@ module ET_D_flip_flop(
 ### 简单工程
 
 !!! danger
-    暂未找到绕过 Combinational Loop 检查的方法。
+    可以使用 ALLOW_CONBINATORIAL_LOOP 绕过检查。
 
 <!-- 使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。 -->
 
