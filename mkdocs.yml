@@ -70,6 +70,7 @@ nav:
   - Lab 7 - Multiplexer: lab7/multiplexer.md
   - Lab 8 - ALU: lab8/ALU.md
   - Lab 9 - Latches & Flip-flops: lab9/latches_flip_flops.md
+  - Lab A - Synchronous counter: labA/sync_counter.md
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
