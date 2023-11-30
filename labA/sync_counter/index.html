@@ -892,11 +892,11 @@ R_C = Q_AQ_BQ_CQ_D = \overline{\overline{Q_A} + \overline{Q_B} + \overline{Q_C} 
 <span class="normal"><a href="#__codelineno-3-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cm">/** module RevCounter</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="cm">  * input</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="cm">    *   clk: A clock signal driven by module clk_1s.</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="cm">    *   s: 1 for increment, 0 for decrement</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="cm">    *   s: 0 for increment, 1 for decrement</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="cm">    * output</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="cm">    *   cnt: a 16-bits register</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="cm">    *   Rc: rise when the counter reset(i.e. carry will be set), that is, Rc becomes 1 when</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="cm">    *           increment(s=1 &amp; cnt=F) or decrement(s=0, cnt=0)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="cm">    *           increment(s=0 &amp; cnt=F) or decrement(s=1, cnt=0)</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="cm"> */</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">//! NOTE: DO NOT CHANGE THE MODULE NAME &amp; PORT NAMES</span>
