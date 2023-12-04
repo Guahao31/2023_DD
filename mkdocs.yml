@@ -71,7 +71,7 @@ nav:
   - Lab 8 - ALU: lab8/ALU.md
   - Lab 9 - Latches & Flip-flops: lab9/latches_flip_flops.md
   - Lab A - Synchronous counter: labA/sync_counter.md
-  - Final Peoject: final_project/final_project.md
+  - Final Project: final_project/final_project.md
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
