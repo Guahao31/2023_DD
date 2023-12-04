@@ -20,6 +20,7 @@
 
 | 时间 | 内容 |
 | --- | :------------------------------------ |
+| 2023.12.4 | [Release] Final Project |
 | 2023.11.27 | [Release] LabA |
 | 2023.11.22 | [Fix] Lab8 attachment SSeg_Dev |
 | 2023.11.21 | [Release] Lab9 |
