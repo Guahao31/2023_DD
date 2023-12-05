@@ -50,7 +50,7 @@
         wire [31:0] my_clkdiv;
         wire [2:0] btn_out;
         reg  [11:0] num;
-        wire [3:0] A1, A2, B1, B2, C1, C2;
+        wire [3:0] A1, A2, B1, B2, C1, C2; // C1 maybe useless
         wire [3:0] mux_out;
         wire Co;
         wire [3:0] ALU_res;
@@ -87,7 +87,7 @@
         /* S        : select the operation on ALU  */
         /* C         : result of ALU */
         /* Co        : Carry bit */
-        ALU m7(.A(num_A), .B(num_B), .res(ALU_res), .Cout(Co), .op(ALU_Ctrl)); // (Co) may be useless
+        ALU m7(.A(reg_A_val), .B(reg_B_val), .res(ALU_res), .Cout(Co), .op(ALU_Ctrl)); // (Co) may be useless
         
         DisplayNumber m8(.clk(clk), .hexs({reg_A_val, reg_B_val, ALU_res, reg_C_val}), 
                                 .LEs(4'b0000), .points(4'b0000), .rst(1'b0), .AN(AN),
