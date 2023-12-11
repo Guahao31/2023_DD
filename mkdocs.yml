@@ -72,6 +72,7 @@ nav:
   - Lab 9 - Latches & Flip-flops: lab9/latches_flip_flops.md
   - Lab A - Synchronous counter: labA/sync_counter.md
   - Lab B - Register: labB/register.md
+  - Lab C - Counter & Timer: labC/counter_timer.md
   - Final Project: final_project/final_project.md
   - Other:
     - Git 基础: Other/about_git.md
