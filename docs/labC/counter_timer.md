@@ -22,3 +22,8 @@
 
 <img src="../pic/fun_74LS161.png" style="zoom: 60%">
 
+??? note "时序图"
+    提供时序图帮助理解：
+
+    <img src="../pic/sync_74LS161.png">
+
