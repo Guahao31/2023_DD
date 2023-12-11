@@ -2,7 +2,7 @@
 
 ## 实验背景
 
-### 74LS161
+### 74LS161 {: #bg-74ls161}
 
 74LS161 芯片具有**同步四位二进制计数器**功能，其引脚如下：
 
@@ -27,7 +27,7 @@
 
     <img src="../pic/sync_74LS161.png">
 
-### x进制计数器
+### x进制计数器 {： #bg-x-counter}
 
 74LS161 提供了十六进制计数器的功能，我们可以通过**反馈清零**和**反馈置位**等方法得到任意进制的计数器，本实验中只使用反馈清零的设计方法。
 
@@ -45,3 +45,112 @@
 
 <img src="../pic/sym_50_counter.png">
 
+## 实现 74LS161 功能
+
+提供代码框架如下，请实现 74LS161 芯片功能，接口定义等内容见[实验背景](#bg-74ls161)。实现后对 `My74LS161` 进行仿真。
+
+```verilog linenums="1"
+module My74LS161(
+    input CP,
+    input CRn,
+    input LDn,
+    input [3:0] D,
+    input CTT,
+    input CTP,
+    output [3:0] Q,
+    output CO
+);
+    
+    reg [3:0] Q_reg = 4'b0;
+    
+    always @(posedge CP or negedge CRn) begin
+        if(!CRn) begin
+            // reset
+        end else begin
+            //
+        end
+    end
+    
+    assign Q = Q_reg;
+    assign CO = (Q == 4'hF);
+    
+endmodule
+```
+
+## 74LS161 应用
+
+!!! note "请注意"
+    请从“233 进制计数器”和“时钟应用”中**选择一个**来完成，如果选择“233 进制计数器”则**本实验获得分数不超过 70**。
+
+### 233 进制计数器
+
+请仿照[五十进制计数器](#bg-x-counter)，使用 `My74LS161` 模块实现一个“233进制”计数器，其状态输出为 `0-232`。实现后进行仿真验证。其中 `rstn` 为异步复位，低位有效。
+
+```verilog linenums="1"
+module counter_233(
+    input clk,
+    input rstn,     // Active-low, reset Q to 0
+    output [7:0] Q
+);
+```
+
+### 时钟应用
+
+要求实现一个格式为“小时：分钟”的时钟应用，使用 Arduino 板上的七段数码管进行输出。使用 `SW[0]` 选择时钟速度，使用 `SW[1]` 对时钟进行“重置”（重置为 `23:00`）。
+
+`top` 模块框架如下，请补充代码，获得正确的 `hour_tens, hour_ones, min_tens, min_ones`，要求必须使用 `My74LS161` 模块。
+
+```verilog linenums="1"
+module top(
+    input clk,
+    input [1:0] SW,
+    output [3:0] AN,
+    output [7:0] SEGMENT
+);
+    
+    wire clk_1s;
+    wire clk_100ms;
+    // Used in LabA
+    clk_1s clk_div_1s (.clk(clk), .clk_1s(clk_1s));
+    clk_100ms clk_div_100ms (.clk(clk), .clk_100ms(clk_100ms)); // Refer to the code of clk_1s to complete this module
+    
+    wire clk_counter = (SW[0] == 1'b0) ? clk_100ms : clk_1s; // Connect this clk_counter to CP-port of 74LS161
+    
+    wire [3:0] hour_tens;
+    wire [3:0] hour_ones;
+    wire [3:0] min_tens;
+    wire [3:0] min_ones;
+    
+    // Your code here to get the correct HOUR and MINUTE
+    
+    // Module written in Lab 7
+    DisplayNumber display_inst(.clk(clk), .hexs({hour_tens, hour_ones, min_tens, min_ones}), .points(4'b0100), .rst(1'b0), .LEs(4'b0000), .AN(AN), .SEGMENT(SEGMENT));
+    
+endmodule
+```
+
+需要注意：
+
+* 分钟部分状态为 `0~59`
+* 小时部分状态为 `0~23`
+* 为每个 `My74LS161` 实例的 `LDn, D3~D0` 接线，使得 `SW[1] == 1` 时将时间设置为 `23:00`
+
+一个可行的设计思路是，使用四个 `My74LS161` 实例分别存储 `hour_tens, hour_ones, min_tens, min_ones` 的值，你需要设计合适的清零与进位时机，如分钟(`min_tens, min_ones`)达到 59 后对时钟进位并清零。
+
+请自行书写约束文件，并进行下板验证。
+
+## 实验报告要求
+
+### 实现 74LS161 功能
+
+* 模块 `My74LS161` 代码
+* 仿真代码，仿真波形与解释
+
+### 74LS161 应用
+
+* 若选择了“233 进制计数器”
+    * 模块 `counter_233` 代码与解释
+    * 仿真代码，仿真波形与解释
+* 若选择了“时钟应用”
+    * 模块 `top` 代码与解释
+    * 下板图片，能够证明功能完整即可
