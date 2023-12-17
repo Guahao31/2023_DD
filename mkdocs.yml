@@ -73,6 +73,7 @@ nav:
   - Lab A - Synchronous counter: labA/sync_counter.md
   - Lab B - Register: labB/register.md
   - Lab C - Counter & Timer: labC/counter_timer.md
+  - Lab D - Shift Register: labD/shift_register.md
   - Final Project: final_project/final_project.md
   - Other:
     - Git 基础: Other/about_git.md
