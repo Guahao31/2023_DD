@@ -49,7 +49,7 @@ SWORD 板上 LED 与七段数码管均是由若干个 74LV164A 构成的**串转
 
     更推荐使用行为描述完成功能。对于在[移位寄存器的应用](#application)中选择“主板 LED 与七段数码管驱动模块”的同学，你可能需要学习 parameter 相关内容，并使用参数设计移位寄存器模块。
 
-    ???+ note "参数设计与 generate"
+    ??? note "参数设计与 generate"
         这里的内容主要参考了 [chipverify 帖子](https://www.chipverify.com/verilog/verilog-generate-block)给出的例子。
 
         我们可以使用 generate 块来批量实例化或提供组合电路赋值，简单来说就是用代码写代码，比如在得到一个一位全加器后，希望通过八个一位级联方式得到八位全加器，我们可以用 generate for 得到八个一位全加器的实例，并给出相应连接：
@@ -152,7 +152,7 @@ SWORD 板上 LED 与七段数码管均是由若干个 74LV164A 构成的**串转
         除了模块定义中的 `parameter`，Verilog 还提供了本地可用的参数 `localparam`，这部分内容请自行学习。
 
 
-使用 Verilog 代码完成一个八位右移移位寄存器，要求接口与功能如下：
+使用 Verilog 代码完成一个 8 位**右移移位**寄存器，要求接口与功能如下：
 
 ```verilog
 module ShiftReg8b(
@@ -169,5 +169,7 @@ module ShiftReg8b(
 * `shift_in`：移位时移入的数据
 * `par_in`：八位并行输入数据
 * `Q`：并行输出数据
+
+完成移位寄存器设计后，书写测试代码进行测试。
 
 ## 移位寄存器的应用 {: #application}
