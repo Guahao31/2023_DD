@@ -197,4 +197,186 @@ module ShiftReg8b(
 
 ### 主板 LED 与七段数码管驱动模块
 
-在[实验背景](#background)中提到，SWORD 上 LED 和七段数码管
+在[实验背景](#background)中提到，SWORD 上 LED 和七段数码管中显示的内容由若干个 74LV164 的**串转并**的信号控制，如果希望在 LED 或七段数码管显示数据，我们提供 74LV164A 需要的串行信号即可，也就是说我们需要完成**并转串**的工作。
+
+#### P2S 模块
+
+并行数据转串行输出模块(P2S, Parallel to Serial Converter)的作用是将并行数据（比如 16 位 LED 亮灭的控制信号）转换成串行输出（同时需要管理串行通信的其他相关信号，如 `sclk, sclrn`）。`P2S` 模块定义如下：
+
+```verilog
+module P2S
+#(parameter BIT_WIDTH = 8)(
+    input clk,
+    input start,
+    input[BIT_WIDTH-1:0] par_in,
+    output sclk,
+    output sclrn,
+    output sout,
+    output EN
+);
+```
+
+一种可以使用的电路如图（但是有比较严重的问题，实际上板极有可能发生问题）：
+
+<img src="../pic/P2S_diagram.png">
+
+以 7 位 P2S 模块为例，其工作过程简述如下：
+
+* 初始（ `start` 置 `0`）：此时 S-R 锁存器的 `set` 信号一定为0，根据锁存器当前存储信号 `q` 的值分类讨论
+    * `q=0` 表示进行串行输入，即每一个时钟周期移位并补 `1`，若干周期后 `Q[7]~Q[1]` 均为 `1`，此时 `finish` 信号置`1`，`reset` 信号置 `0`，锁存器状态保持为 `0`
+    * `q=1` 表示进行并行输入，此时并行输入 7 位脏值，但由于最高位接地一定为 `0`，`finish` 信号一定为 `0`，`reset` 信号置 `1`，锁存器状态改变 `q=0`，后经过一段时间后锁存器状态为 `0`，`finish` 为 `1`
+    * 初始状态开始一段时间以后，`finish` 信号一定为 `1`，表示并未进行串行输出，此时模块状态稳定，等待 `start` 信号
+* 开始传输（外界准备好并行输入的数据后，`start` 置1）：在并行输入的 7 位数据准备好后，`start` 信号进行一次脉冲（0-1-0），（因为初始状态下 `finish` 置 `1`）在 `start` 置 `1` 时，S-R 锁存器进行一次 set，`q=1`，移位寄存器进行了并行输入 `Q[7:0] = {1'b0, D[6:0]}`
+    * 最高位存在一个 `0`，因此一定有 `finish=0`
+        * `sclk = finish | clk`，此时 `sclk` 值和 `clk` 完全相同，即输出的时间点和移位寄存器进行一次右移输出的时间点相同
+        * `ser_out` 每一个时钟周期输出最低位，右移一位，高位补 `1`
+* 传输结束：传输过程中，高位始终补 `1`，当并行输入的 7 位全部输出后，当前的 `Q` 值为 `8'b1111_1110`
+    * `finish` 置 `1`，表示串行输出结束
+        * `sclk` 置 `1`，不再存在“上升沿”
+    * `q=0`，且 `set` 和 `reset` 信号均为 `0`，保持
+    * 等待下一个 `start` 信号，重新传输
+
+因为直接使用逻辑门可能会综合失败，这里提供模仿 SR 锁存器行为的模块：
+
+```verilog linenums="1"
+module SR_Latch(
+    input S,
+    input R,
+    output Q,
+    output Qn
+);
+
+    reg Q_reg = 1'b0;
+
+    always @(*) begin
+        if(!S && R) Q_reg = 1'b0;
+        else if(S && !R) Q_reg = 1'b1;
+    end
+
+    assign Q = Q_reg;
+    assign Qn = ~Q_reg;
+
+endmodule
+```
+
+请你完善以下代码，得到一个任意位宽的 P2S 模块：
+
+```verilog linenums="1"
+module P2S
+#(parameter BIT_WIDTH = 8)(
+    input clk,
+    input start,
+    input[BIT_WIDTH-1:0] par_in,
+    output sclk,
+    output sclrn,
+    output sout,
+    output EN
+);
+
+    wire[BIT_WIDTH:0] Q;
+
+    SR_Latch // Your code here
+
+    ShiftReg // Your code here
+
+    assign finish = // Your code here
+
+    assign EN = !start && finish;
+    assign sclk = finish | clk;
+    assign sclrn = 1'b1;
+    assign sout = Q[0];
+
+endmodule
+```
+
+补充说明几个电路图中没有提到的信号：
+
+* `sclk`：串行通信所用的“时钟”，在不进行通信时常置 `1` 或 `0`，在 `sclk` 上升沿提供串行通信的一位信息 `sout`
+* `EN`：高位有效，用来控制板上 LED 与七段数码管的使能，在重新载入数据时应置 `0` 避免闪烁
+* `sclrn`：我们可以不使用重置信号，常置 `1` 无效状态
+
+完成模块后，请设计仿真文件进行仿真。
+
+!!! success "Congratulations!"
+    完成 `P2S` 及其仿真，即可能获得 100 分（后一小节为加分项）。
+
+### 主板 LED 与七段数码管驱动模块
+
+分别设计 LED 与七段数码管驱动模块（实际上就是对不同位宽 16 位和 64 位 P2S 的封装）。
+
+#### LEDP2S
+
+`LEDP2S` 是对 16 位 P2S 的简单封装，直接在模块中实例化一个参数 `DATA_WIDTH` 为 16 的 `P2S` 模块即可。
+
+```verilog
+module LEDP2S(
+    input clk,
+    input start,
+    input[15:0] par_in,
+    output sclk,
+    output sclrn,
+    output sout,
+    output EN
+);
+```
+
+#### Sseg_Dev
+
+`Sseg_Dev` 中需要对传入的 `LEs, points, hexs` 等信号进行解析，获得一个 64 位数据再将其传入 64 位 `P2S` 模块中。
+
+```verilog
+module Sseg_Dev(
+    input clk,
+    input start,
+    input [31:0] hexs,
+    input [7:0] points,
+    input [7:0] LEs,
+    output sclk,
+    output sclrn,
+    output sout,
+    output EN
+)
+```
+
+请直接使用以下模块获得 64 位数据：
+
+```verilog
+module HexsTo8Seg(
+    input [31:0] hexs,
+    input [7:0] points,
+    input [7:0] LEs,
+    output [63:0] seg_data
+);
+
+    Hex2Seg HTS0(.hex(hexs[31:28]), .LE(LEs[7]), .point(point[7]), .segment(seg_data[7:0]));  
+    Hex2Seg HTS1(.hex(hexs[27:24]), .LE(LEs[6]), .point(point[6]), .segment(seg_data[15:8])); 
+    Hex2Seg HTS2(.hex(hexs[23:20]), .LE(LEs[5]), .point(point[5]), .segment(seg_data[23:16]));  
+    Hex2Seg HTS3(.hex(hexs[19:16]), .LE(LEs[4]), .point(point[4]), .segment(seg_data[31:24]));
+
+    Hex2Seg HTS4(.hex(hexs[15:12]), .LE(LEs[3]), .point(point[3]), .segment(seg_data[39:32]));
+    Hex2Seg HTS5(.hex(hexs[11:8]),  .LE(LEs[2]), .point(point[2]), .segment(seg_data[47:40]));
+    Hex2Seg HTS6(.hex(hexs[7:4]),   .LE(LEs[1]), .point(point[1]), .segment(seg_data[55:48]));
+    Hex2Seg HTS7(.hex(hexs[3:0]),   .LE(LEs[0]), .point(point[0]), .segment(seg_data[63:56]));
+
+endmodule
+
+module HexToSeg(
+    input [3:0] hex,
+    input LE,
+    input point,
+    output segment
+);
+
+    MyMC14495 MSEG(.D3(hex[3]), .D2(hex[2]), .D1(hex[1]), .D0(hex[0]), .LE(LE), .point(point),
+        .a(a), .b(b), .c(c), .d(d), .e(e), .f(f), .g(g), .p(p));
+
+    assign Segment = {a, b, c, d, e, f, g, p};
+
+endmodule
+```
+
+#### 应用
+
+请设计一个顶层模块，调用 `clkdiv` 模块获得分频时钟，调用你完成的 `LEDP2S` 将 `16'hBEEF` 数据展示在板上 LED，调用你完成的 `Sseg_Dev` 将 `32'hDEADBEEF` 展示在七段数码管上。
+
+请注意，将 `clkdiv` 分频得到的 `divres[20]` 接到两个 `P2S` 封装模块的 `start` 端口。
