@@ -273,7 +273,7 @@ endmodule
 
 ### ALU 简单应用
 
-1. 完成后，截图工程中的文件结构，即 [Lab4 中要求的截图](../..//warmup/lab4/#vivado-report)。
+1. 完成后，截图工程中的文件结构，即 [Lab4 中要求的截图](../../warmup/lab4/#vivado-report)。
 2. 拍摄下板现象，证明你实现了完整的功能。
 
 ### 思考题
