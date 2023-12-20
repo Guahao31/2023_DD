@@ -14,4 +14,23 @@ Arduino 板上共有 4 个七段数码管，可使用使能信号 `AN` 进行扫
 
 SWORD 板上有 8 个七段数码管，接受串行数据，由串行通信信号 `seg_sclk, seg_sclrn, seg_sout, seg_EN` 控制，其原理见 [LabD](../labD/shift_register.md/#onboard-LED-7seg)，在 [Lab8](../lab8/ALU.md) 中第一次使用。
 
-## 
+## 蜂鸣器
+
+SWORD 板载 Arduino 板上有蜂鸣器，可用来发出简单的音效，其约束如下：
+
+```
+set_property PACKAGE_PIN AF25 [get_ports buzzer]
+set_property IOSTANDARD LVCMOS33 [get_ports buzzer]
+```
+
+蜂鸣器接收一定频率的信号（如方波）并发出对应频率的声音，可以设计一个根据输入音高得到特定频率方波的模块来处理声音，它类似于：
+
+```verilog
+module buzzer_driver(
+    input clk,
+    input[4:0] note,
+    output beep
+)
+```
+
+模块内部，你可以根据输入的音高得到对应频率 `freq` 进而产生这一频率的方波 `beep`。
