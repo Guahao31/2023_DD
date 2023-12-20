@@ -58,3 +58,31 @@ VGA(Video Graphics Array) 协议是一种使用模拟信号的显示标准，我
 ### 使用
 
 这里提供一个可用的 VGA 驱动模块[代码](../attachment/vgac.v)，它来自老师提供的优秀工程。
+
+其模块接口如下：
+
+```verilog
+module vgac(
+    input vga_clk,
+    input clrn,
+    input [11:0] d_in,
+    output reg [8:0] row_addr,
+    output reg [9:0] col_addr,
+    output reg rdn,
+    output reg [3:0] r,g,b,
+    output reg hs, vs
+);
+```
+
+输入信号：
+
+* `vga_clk`：由原理可知，迎接入 25MHz 时钟，如果接入后无法正常显示，可以尝试用 MMCM 获得 25.175MHz 的时钟接入
+* `clrn`：重置信号，低电平有效，有效时将扫描信号归位到 (0, 0)
+* `d_in`：12 位 RGB 信号，格式为 `bbbb_gggg_rrrr`，每个色彩通道使用 4 位。需要注意，这里的 RGB 值是根据**上个**时钟周期的 `row_addr, col_addr` 确定的
+
+输出信号：
+
+* `row_addr, col_addr`：扫描地址
+* `r, g, b`：三个色彩通道值，直接连接到顶层模块输出即可
+* `rdn`：判断当前扫描到的地址是否为有效数据，低电平为有效
+* `hs, vs`：行同步信号与场同步信号，详见原理
