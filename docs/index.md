@@ -20,6 +20,7 @@
 
 | 时间 | 内容 |
 | --- | :------------------------------------ |
+| 2023.12.21 | [Release] Device for FP |
 | 2023.12.18 | [Release] LabD |
 | 2023.12.11 | [Release] LabC |
 | 2023.12.4 | [Release] LabB |
@@ -29,7 +30,7 @@
 | 2023.11.21 | [Release] Lab9 |
 | 2023.11.14 | [Fix] Code of Lab8 |
 | 2023.11.14 | [Release] Lab8 |
-| 2023.11.6 | [Release] Lab7 |
+<!-- | 2023.11.6 | [Release] Lab7 | -->
 <!-- | 2023.10.31 | [Release] Lab6 | -->
 <!-- | 2023.10.23 | [Release] Lab5 | -->
 <!-- | 2023.10.12 | [Update] 迟交政策 | -->
