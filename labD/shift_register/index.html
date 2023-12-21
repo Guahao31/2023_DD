@@ -494,7 +494,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led" class="md-nav__link">
+  <a href="#onboard-LED-7seg" class="md-nav__link">
     主板 LED 与七段数码管
   </a>
   
@@ -528,7 +528,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led_1" class="md-nav__link">
+  <a href="#led" class="md-nav__link">
     主板 LED 与七段数码管驱动模块
   </a>
   
@@ -548,7 +548,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led_2" class="md-nav__link">
+  <a href="#led_1" class="md-nav__link">
     主板 LED 与七段数码管驱动模块
   </a>
   
@@ -601,10 +601,60 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          Final Project
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Final Project
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../final_project/final_project/" class="md-nav__link">
-        Final Project
+        大程要求
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../final_project/device/" class="md-nav__link">
+        外设使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -737,7 +787,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led" class="md-nav__link">
+  <a href="#onboard-LED-7seg" class="md-nav__link">
     主板 LED 与七段数码管
   </a>
   
@@ -771,7 +821,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led_1" class="md-nav__link">
+  <a href="#led" class="md-nav__link">
     主板 LED 与七段数码管驱动模块
   </a>
   
@@ -791,7 +841,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#led_2" class="md-nav__link">
+  <a href="#led_1" class="md-nav__link">
     主板 LED 与七段数码管驱动模块
   </a>
   
@@ -865,7 +915,7 @@
 <p>74LV164A 功能为 8 位串入并出移位寄存器。清零端 <code>CLR</code> 低电平有效，异步重置将触发器的值修改为 <code>0</code>；串入数据端 <code>A, B</code> 均为高位时输入 <code>1</code>，其他输入下表示输入 <code>0</code>。使用的触发器为正边沿触发。</p>
 <p><img src="../pic/74LV164A_diagram.png"></p>
 <p>74LS164 芯片功能与 74LV164A 基本相同，使用的技术不同导致电气特性不同，我们不需要关注。</p>
-<h3 id="led">主板 LED 与七段数码管</h3>
+<h3 id="onboard-LED-7seg">主板 LED 与七段数码管</h3>
 <p>SWORD 板上 LED 与七段数码管均是由若干个 74LV164A 构成的<strong>串转并</strong>（串行输入、并行输出）模块控制，可以回想在使用板上 LED 与七段数码管时，我们会约束 <code>s_out, s_clk, s_clr</code> 等信号，这其实就是串转并模块需要的串行通信信号。</p>
 <p>以 LED 为例，板上共 16 个 LED，需要 16 位信号进行控制，可以使用两个 74LV164A 组成 16 位右移移位寄存器来控制，在使用时，我们需要对 <code>LED_CLK, LED_DO</code> 等信号进行控制，在 <code>LED_CLK</code> 上升沿会发生移位并将 <code>LED_DO</code> 信号的值传入寄存器最低位。</p>
 <p><img src="../pic/LED_diagram.png"></p>
@@ -1084,7 +1134,7 @@
 <li>关于时钟：请调用 <code>clk_1s</code> 模块获得一个 1s 脉冲的时钟，并将其接到移位寄存器的 <code>clk</code> 端口</li>
 </ul>
 <p>请自行书写代码和约束文件，下板后拍摄图片。</p>
-<h3 id="led_1">主板 LED 与七段数码管驱动模块</h3>
+<h3 id="led">主板 LED 与七段数码管驱动模块</h3>
 <p>在<a href="#background">实验背景</a>中提到，SWORD 上 LED 和七段数码管中显示的内容由若干个 74LV164 的<strong>串转并</strong>的信号控制，如果希望在 LED 或七段数码管显示数据，我们提供 74LV164A 需要的串行信号即可，也就是说我们需要完成<strong>并转串</strong>的工作。</p>
 <h4 id="p2s">P2S 模块</h4>
 <p>并行数据转串行输出模块(P2S, Parallel to Serial Converter)的作用是将并行数据（比如 16 位 LED 亮灭的控制信号）转换成串行输出（同时需要管理串行通信的其他相关信号，如 <code>sclk, sclrn</code>）。<code>P2S</code> 模块定义如下：</p>
@@ -1230,7 +1280,7 @@
 <p class="admonition-title">令人悲伤的是</p>
 <p>虽然你可能刚刚“艰难”地完成了 <code>P2S</code> 的设计，但不得不指出这一设计在时序上简直就是灾难，仔细观察波形会发现，我们的 <code>sclk</code> 与 <code>sout</code> 是同时变化的，这在板上可能会造成不断的闪烁（因为难以连续的正确通信），但大体上还是我们想显示的内容。一般会推荐使用状态机来完善，这一改进将在下一节解释。如果你的目的仅是获得本实验的满分，到此为止吧！</p>
 </div>
-<h3 id="led_2">主板 LED 与七段数码管驱动模块</h3>
+<h3 id="led_1">主板 LED 与七段数码管驱动模块</h3>
 <p>分别设计 LED 与七段数码管驱动模块（实际上就是对不同位宽 16 位和 64 位 P2S 的封装）。</p>
 <h4 id="ledp2s">LEDP2S</h4>
 <p><code>LEDP2S</code> 是对 16 位 P2S 的简单封装，直接在模块中实例化一个参数 <code>DATA_WIDTH</code> 为 16 的 <code>P2S</code> 模块即可。</p>

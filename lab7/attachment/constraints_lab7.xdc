@@ -164,9 +164,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports {SEGMENT[7]}]
 # set_property PACKAGE_PIN N26 [get_ports LEDCLK]
 # set_property PACKAGE_PIN N24 [get_ports LEDCLR]
 # set_property PACKAGE_PIN M26 [get_ports LEDDT]
+# set_property PACKAGE_PIN P18 [get_ports LEDEN]
 # set_property IOSTANDARD LVCMOS33 [get_ports LEDCLK]
 # set_property IOSTANDARD LVCMOS33 [get_ports LEDCLR]
 # set_property IOSTANDARD LVCMOS33 [get_ports LEDDT]
+# set_property IOSTANDARD LVCMOS33 [get_ports LEDEN]
 
 # #16dips
 # set_property PACKAGE_PIN AA10 [get_ports {switch[0]}]
