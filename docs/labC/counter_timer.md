@@ -111,13 +111,13 @@ module top(
     output [7:0] SEGMENT
 );
     
-    wire clk_1s;
+    wire clk_10ms;
     wire clk_100ms;
-    // Used in LabA
-    clk_1s clk_div_1s (.clk(clk), .clk_1s(clk_1s));
-    clk_100ms clk_div_100ms (.clk(clk), .clk_100ms(clk_100ms)); // Refer to the code of clk_1s to complete this module
+    // clk_1s used in LabA
+    clk_10ms clk_div_10ms (.clk(clk), .clk_10ms(clk_10ms)); // Refer to the code of clk_1s to complete these modules
+    clk_100ms clk_div_100ms (.clk(clk), .clk_100ms(clk_100ms)); 
     
-    wire clk_counter = (SW[0] == 1'b0) ? clk_100ms : clk_1s; // Connect this clk_counter to CP-port of 74LS161
+    wire clk_counter = (SW[0] == 1'b0) ? clk_10ms : clk_100ms; // Connect this clk_counter to CP-port of 74LS161
     
     wire [3:0] hour_tens;
     wire [3:0] hour_ones;
