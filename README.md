@@ -1,3 +1,5 @@
+> **本文档已停止更新，新文档[仓库地址](https://github.com/Guahao31/2024_DD)**
+
 # ZJU-Digital Logic Design Lab 2023
 
 本仓库用来发布《数字逻辑设计》课程实验文档，你可以直接查看[在线文档](https://guahao31.github.io/2023_DD)，或将本仓库拉至本地部署。在校园网环境下，你也可以访问 ZJU Git Pages 上部署的[实验文档](http://3200105455.pages.zjusct.io/2023_dd)以及 ZJU Git 中的[仓库](https://git.zju.edu.cn/3200105455/2023_dd)。
