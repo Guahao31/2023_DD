@@ -1,3 +1,6 @@
+!!! warning 
+    本文档已停止更新，新文档[仓库地址](https://github.com/Guahao31/2024_DD)
+
 # 算术逻辑单元
 
 <!-- !!! danger "请注意"

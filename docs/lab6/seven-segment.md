@@ -1,3 +1,6 @@
+!!! warning 
+    本文档已停止更新，新文档[仓库地址](https://github.com/Guahao31/2024_DD)
+
 # 七段数码管
 
 <!-- !!!danger "Pre-Release"

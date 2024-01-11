@@ -1,3 +1,6 @@
+!!! warning 
+    本文档已停止更新，新文档[仓库地址](https://github.com/Guahao31/2024_DD)
+
 # 移位寄存器
 
 ## 实验背景 {: #background}

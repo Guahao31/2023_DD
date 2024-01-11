@@ -1,3 +1,6 @@
+!!! warning 
+    本文档已停止更新，新文档[仓库地址](https://github.com/Guahao31/2024_DD)
+
 # 多路选择器
 
 !!! tip "请注意"
